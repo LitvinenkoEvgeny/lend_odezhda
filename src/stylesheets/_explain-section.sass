@@ -1,0 +1,85 @@
+.explain-section
+  &__container
+    @extend %container
+    padding: 102px 0 0
+  &__header
+    text-align: center
+    h5
+      color: #444
+      font-family: $fontRegular
+      font-size: 24px
+      font-weight: 400
+      line-height: 60px
+      margin: 0
+      position: relative
+      top: 20px
+  &__delimiter
+    position: relative
+    h2
+      color: #4b85c2
+      margin-top: 0
+      font-family: $fontBold
+      font-size: 60px
+      font-weight: 700
+      line-height: 60px
+      display: inline-block
+      background: #ffffff
+    &::after
+      content: ""
+      display: inline-block
+      height: 2px
+      width: 40%
+      position: absolute
+      top: 30px
+      background-color: #4b85c2
+    &::before
+      content: ""
+      display: inline-block
+      height: 2px
+      width: 40%
+      position: absolute
+      left: -39px
+      top: 30px
+      background-color: #4b85c2
+  &__content
+    font-size: 0
+  &__director, &__description
+    font-size: 16px
+    display: inline-block
+  &__director
+    width: toPercents(269, 940)
+    vertical-align: top
+  &__name
+    text-align: center
+    color: black
+    font-family: $fontRegular
+    font-size: 16px
+    line-height: 24px
+    letter-spacing: 1px
+    p 
+      margin: 0
+    a 
+      font-size: 16px
+      color: #2400ff
+      line-height: 24px
+      text-decoration: underline
+  &__description
+    padding-left: 50px
+    width: toPercents(650, 940)
+    p 
+      margin: 30px 0
+      color: #3a3a3a
+      font-family: $fontMedium
+      font-size: 16px
+      letter-spacing: 1px
+
+    p:first-child
+      margin-top: 0
+    em 
+      color: #3a3a3a
+      font-family: $fontBold
+      font-style: normal
+      font-size: 16px
+      line-height: 30px
+  &__sign 
+    text-align: right

@@ -1,0 +1,50 @@
+.top-section
+  &__container
+    @extend %container
+    padding: 0
+
+  &__items
+    margin: 78px 0 0
+    padding: 0
+    font-size: 0
+  &__item
+    font-size: 16px
+    display: inline-table
+    list-style-type: none
+    width: toPercents(298, 940)
+    height: 180px
+    background-color: #efefef
+    vertical-align: top
+    margin-bottom: 20px
+    padding: 0 20px
+    &:not(:first-child)
+      margin-left: toPercents(17, 940)
+    &:nth-child(4)
+      margin-left: 0
+    &:nth-child(5)
+      padding-left: 10px
+
+  &__img-wrp
+    display: table-cell
+    vertical-align: middle
+  &__img, &__text
+    vertical-align: middle
+
+  &__img
+    display: table-cell
+  &__text
+    text-align: center
+    display: table-cell
+    h4
+      font-family: $fontMedium
+      color: #4a4a4a
+      text-transform: uppercase
+      line-height: 60px
+      font-weight: 500
+      font-size: 24px
+      margin: 0
+  &__btn
+    width: 106px
+    padding: 0
+
+

@@ -1,0 +1,59 @@
+.center
+    height: 100%
+    width: 100 - toPercents(144,2300)
+    float: left
+.slider-wrapper
+    height: 100%
+    overflow-x: hidden
+    position: relative
+.slider 
+    height: 100%
+    font-size: 0
+
+    &__bullets
+        position: absolute
+        bottom: 50px
+        left: 500px
+    &__bullet
+        width: 10px
+        height: 10px
+        display: inline-block
+        margin-left: 10px
+        border-radius: 100%
+        border: 5px solid $grey
+        cursor: pointer
+        &--active
+            border-color: $blue
+            background-color: $blue
+.slide 
+    height: 100%
+    background-size: contain
+    text-align: center
+    display: inline-block
+
+
+
+
+    &__header
+        font-family: $latoThin 
+        font-size: (1600*220)/2300 * 1px
+        line-height: 120px
+        padding-top: verticalHeight(181, 791)
+    &__text 
+        font-family: $latoThin
+        font-size: (1600*36)/2300 * 1px
+        margin-top: verticalHeight(57, 791)
+        margin-bottom: verticalHeight(63, 791)
+    &__button 
+        border-radius: 20px
+        text-transform: uppercase
+        padding: verticalHeight(20, 791) 52px
+        color: #fff 
+        text-decoration: none
+        font-family: $latoBlack
+        font-size: (1600*18)/2300 * 1px
+
+        &--blue
+            background-color: $blue
+    
+

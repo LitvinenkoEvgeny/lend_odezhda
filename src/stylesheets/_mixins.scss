@@ -1,0 +1,129 @@
+@function toPercents($target,$context){
+  @return $target / $context * 100 * 1%;
+}
+
+@function verticalHeight($target,$context){
+    @return $target / 1438 * $context * 1px;
+}
+
+
+@mixin commonSaleSection($name, $bgColor: #fff){
+    .#{$name}-section{
+        &__wrp{
+            background-color: $bgColor;
+        }
+        &__container{
+            @extend %container;
+            padding: 42px 0 47px;
+        }
+        &__header{
+            color: #595959;
+            margin-top: 0;
+            font-family: $fontRegular;
+            font-size: 36px;
+            font-weight: 200;
+            line-height: 60px;
+            text-align: center;
+            overflow-x: hidden;
+            h3{
+                margin-top: 0;
+            }
+            span {
+                position: relative;
+                background-color: $bgColor;
+                z-index: 3;
+                &::before{
+                    width: 1000px;
+                    position: absolute;
+                    left: -1010px;
+                    top: 20px;
+                    content: "";
+                    z-index: 0;
+                    height: 1px;
+                    background-color: #909090;
+                    display: block;
+                }
+                &::after{
+                    width: 1000px;
+                    position: absolute;
+                    right: -1010px;
+                    top: 20px;
+                    content: "";
+                    z-index: 0;
+                    height: 1px;
+                    background-color: #909090;
+                    display: block;
+                }
+            }
+        }
+        &__items{
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+        }
+        &__item{
+            width: toPercents(227, 940);
+            height: 400px;
+            display: inline-block;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.13);
+            font-size: 16px;
+            text-align: center;
+            padding: 33px 0 121px;
+            transition: transform .4s ease-in-out;
+            background: #fff;
+            margin-bottom: 40px;
+            &:hover{
+                transform: scale(1.2);
+                .#{$name}-section__more{
+                    opacity: 1;
+                }
+            }
+            &:nth-child(1),
+            &:nth-child(2), 
+            &:nth-child(3){
+                margin-right: toPercents(10, 940);
+            }
+            &:nth-child(4n + 1),
+            &:nth-child(5n + 1),
+            &:nth-child(6n + 1){
+                margin-right: toPercents(10, 940);
+            }
+        }
+        &__description{
+            margin-top: 20px;
+            font-family: $fontRegular;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 18px;
+            p {
+                margin: 0;
+            }
+        }
+        &__price{
+            color: #e20000;
+            font-family: $fontRegular;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 28px;
+        }
+        &__more{
+            opacity: 0;
+            transition: opacity .4s ease-in-out;
+            i {
+                width: 22px;
+                height: 16px;
+                margin-right: 10px;
+                display: inline-block;
+                vertical-align: middle;
+                background: url("../images/show-more.png") no-repeat;
+            }
+            a{
+                color: #7f7f7f;
+                font-family: $fontRegular;
+                font-size: 18px;
+                font-weight: 300;
+                line-height: 30px;
+            }
+        }
+    }
+}

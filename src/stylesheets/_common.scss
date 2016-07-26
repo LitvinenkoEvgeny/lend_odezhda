@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+%container {
+  width: 940px;
+  margin: 0 auto;
+  padding: 36px 0 55px;
+}
+
+%btn {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 36px;
+  font-family: $fontRegular;
+  color: #000;
+  background-color: #fff;
+  transition: color .3s ease-in, background-color .4s ease-out;
+}
+
+%btn--red {
+  background-color: $redColor;
+  color: #fff;
+}
+%btn--blue{
+  background-color: $blueColor;
+  color: #fff;
+}
+
+%header-icon{
+  display: inline-block;
+  width: 64px;
+  height: 50px;
+}
+
+.btn {
+  @extend %btn;
+  &:hover{
+    @extend %btn--red;
+  }
+  &--blue{
+    &:hover{
+      @extend %btn--blue;
+    }
+  }
+}
+
+

@@ -1,0 +1,153 @@
+.header
+  &__container
+    @extend %container
+    +clearfix()
+    padding-bottom: 150px
+  &__wrp
+    //width: 1336px
+    margin: 0 auto
+    background: #e1e1e1 url('../images/header-bg.png') no-repeat
+    background-size: cover
+  &__right
+    +clearfix()
+    width: 478px
+    float: right
+  &__phones
+    width: 327px
+    padding: 26px 60px 21px
+    margin: 0 auto
+    text-align: center
+    box-sizing: border-box
+    background: url("../images/header-phone-bg.png") no-repeat
+    background-size: 100% 101%
+    p
+      margin: 0
+      font-family: $fontRegular
+      font-size: 24px
+      color: $greyColor
+      margin-bottom: 15px
+    p.time
+      font-family: $fontSemiBold
+      font-size: 15px
+      text-transform: uppercase
+  &__other
+    margin-top: 45px
+    text-align: center
+    text-transform: uppercase
+    color: $greyColor
+    h2
+      margin: 20px 0 0
+      font-size: 60px
+      font-family: $fontBold
+    h4
+      margin: 10px 0
+      font-size: 26px
+      line-height: 48px
+      font-family: $fontSemiBold
+      &:last-child
+        font-size: 35px
+
+  &__icons
+    +clearfix()
+    font-size: 0
+    margin-top: 35px
+
+    .car, .fabric
+      display: inline-block
+      width: 47%
+      p
+        font-family: $fontMedium
+        font-size: 18px
+        line-height: 24px
+        margin: 0
+        color: $greyColor
+
+    .car
+      margin-left: 20px
+      i
+        @extend %header-icon
+        background-image: url("../images/icon-car.png")
+      .car__text
+        vertical-align: top
+        display: inline-block
+        margin-left: 15px
+        p
+          margin: 0
+    .fabric
+      margin-left: 8px
+      i
+        @extend %header-icon
+        background-image: url("../images/icon-fabric.png")
+        width: 61px
+        height: 65px
+      .fabric__text
+        display: inline-block
+        margin-top: 14px
+        vertical-align: top
+        margin-left: 15px
+
+
+  &__buttons
+    font-size: 0
+    margin-top: 77px
+    a
+      padding: 0
+      width: 45%
+      font-size: 12px
+      text-align: center
+      text-transform: uppercase
+      font-family: $fontRegular
+      &:nth-child(2)
+        margin-left: 10%
+
+
+
+.nav
+  &__wrp
+    background-color: #f4f4f4
+  &__container
+    @extend %container
+    font-size: 0
+    padding: 10px 0
+  &__items, &__right-text
+    font-size: 16px
+    display: inline-block
+  &__items
+    width: 60%
+    vertical-align: top
+    margin-top: 8px
+  &__list
+    padding: 0
+    margin: 0
+    font-size: 0
+    li
+      font-size: 16px
+      display: inline-block
+      &:not(:last-child)
+        border-right: 1px solid #000000
+        margin-right: 5px
+        padding-right: 5px
+  &__link
+    color: #000000
+    transition: color .3s ease-in-out, text-decoration .2s ease
+    font-family: $fontMedium
+    &:hover
+      text-decoration: underline
+      color: #aa2230
+  &__right-text
+    padding-left: 80px
+    margin-left: 10%
+    width: 30%
+    font-size: 0
+    font-family: $fontSegoeRegular
+  &__call-us, &__phones
+    display: inline-block
+    font-size: 12px
+    p
+      margin: 0
+
+  &__phones
+    margin-left: 25px
+
+
+
