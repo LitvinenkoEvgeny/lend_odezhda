@@ -65,6 +65,13 @@ gulp.task("js", function(callback) {
             filename: 'app.js',
             path: './dist/scripts'
           },
+          plugins: [
+            new webpack.ProvidePlugin({
+              "$":"jquery",
+              "jQuery":"jquery",
+              "window.jQuery":"jquery"
+            }),
+          ],
           module: {
             loaders: [
               {
@@ -74,7 +81,9 @@ gulp.task("js", function(callback) {
                 query: {
                   presets: ['es2015']
                 }
-              }
+              },
+              { test: /\.css$/, loader: "style-loader!css-loader?root=." },
+              { test: /\.gif$/, loader: "file-loader" },
             ]
           }
     }, function(err, stats) {

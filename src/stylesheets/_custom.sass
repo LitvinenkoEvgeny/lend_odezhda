@@ -1,0 +1,49 @@
+.custom-section
+    text-align: center
+    &__wrp
+        height: 405px
+        background: url("../images/custom-bg.png") no-repeat, url("../images/custom-section-bg.png") repeat
+    &__container
+        @extend %container
+        padding: 0
+    &__form 
+        padding-top: 110px
+        font-size: 0
+        h2 
+            color: black
+            font-family: $fontRegular
+            font-size: 36px
+            font-weight: 300
+            line-height: 60px
+            margin: 0
+            padding-left: 65px
+    &__input, &__btn
+        display: inline-block
+        margin-top: 19px
+    &__input
+        width: toPercents(283, 940)
+        margin-left: toPercents(65, 940)
+        border: 1px solid #999
+        outline: none
+        background-color: transparent
+        padding: 10px 5px
+        color: #a2a2a2
+        text-align: center
+        font-family: $fontLight
+        font-size: 14px
+        line-height: 15px
+        font-variant: small-caps
+    &__btn
+        width: toPercents(193, 940)
+        margin-left: toPercents(17, 940)
+        padding: 0
+        text-align: center
+        font-family: $fontLight
+        font-variant: small-caps
+        background-color: #4b88a8
+        font-size: 12px
+        line-height: 38px
+        color: #fff
+
+
+

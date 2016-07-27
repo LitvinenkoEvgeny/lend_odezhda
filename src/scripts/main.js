@@ -1,3 +1,18 @@
-import directorConnectInit from "./directorConnect";
+import $ from "jquery";
 
-directorConnectInit();
+import inputCursor from "./inputValue";
+import scrollLogic from "./scrollingLogic";
+import myScript from "./myScript";
+import stickyHeader from "./stickyHeader";
+import addModal from "./modals";
+
+$(document).ready(function() {
+    scrollLogic();
+    
+    inputCursor('.director-connect form');
+    inputCursor('.custom-section form');
+    inputCursor('.footer form');
+
+    addModal('.header__buttons a:last-child', 'div.modal-havent-time');
+    inputCursor('.modal-havent-time__form');
+});
