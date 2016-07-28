@@ -389,7 +389,7 @@ a {
 .header__wrp {
   margin: 0 auto;
   background: url("../images/header-man-bg.png") no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 .header__right {
   overflow: hidden;
