@@ -9,11 +9,11 @@
             "plotnost": "1900",
             "sizes": [ "S (46)", "M (48)", "L (50)", "XL (52)", "XXL (54)" ],
             "colors": [
-                { "orange": "/images/sale-img-1.png"},
-                { "blue": "/images/sale-img-2.png"},
-                { "purple": "/images/sale-img-3.png"},
-                { "green": "/images/sale-img-4.png"},
-                { "orange": "/images/sale-item-5.png"}
+                { "orange": "images/sale-img-1.png"},
+                { "blue": "images/sale-img-2.png"},
+                { "purple": "images/sale-img-3.png"},
+                { "green": "images/sale-img-4.png"},
+                { "orange": "images/sale-item-5.png"}
             ],
             "price": {
                 "1-9": "90р",
@@ -33,11 +33,11 @@
             "plotnost": "120",
             "sizes": [ "S (46)", "M (48)", "L (50)", "XL (52)", "XXL (54)" ],
             "colors": [
-                { "orange": "/images/sale-img-1.png"},
-                { "blue": "/images/sale-img-2.png"},
-                { "purple": "/images/sale-img-3.png"},
-                { "green": "/images/sale-img-4.png"},
-                { "orange": "/images/sale-item-5.png"}
+                { "orange": "images/sale-img-1.png"},
+                { "blue": "images/sale-img-2.png"},
+                { "purple": "images/sale-img-3.png"},
+                { "green": "images/sale-img-4.png"},
+                { "orange": "images/sale-item-5.png"}
             ],
             "price": {
                 "1-9": "95р",
