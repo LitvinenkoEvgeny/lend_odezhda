@@ -3,16 +3,83 @@ html.no-js
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        title Dyno
-        meta(name='description', content='')
+        title Дешевая мужская и женская одежда оптом
+        meta(name='description', content='Доставка по всей России. От производителя. Посмотрите ассортимент и цены')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel="stylesheet", href="stylesheets/main.css")
+        link(rel="shortcut icon", href="favicon.ico" type="image/x-icon")
 
     body
             div(style='display: none;')
               #exampleModal.box-modal
                 .box-modal_close.arcticmodal-close закрыть
                 |         Пример модального окна
+
+        .modal-card__wrp
+            .modal-card
+                .modal-card__close.close X
+                .modal-card__content
+                    .modal-card__left
+                        img.modal-card__img(src="images/sale-img-1.png")
+                        .modal-card__image-colors
+                            ul 
+                                li.modal-card__image-color.modal-card__image-color--orange
+                                li.modal-card__image-color.modal-card__image-color--blue
+                                li.modal-card__image-color.modal-card__image-color--purple
+                                li.modal-card__image-color.modal-card__image-color--green
+                                li.modal-card__image-color.modal-card__image-color--orange
+                                li.modal-card__image-color.modal-card__image-color--blue
+                                li.modal-card__image-color.modal-card__image-color--purple
+                                li.modal-card__image-color.modal-card__image-color--green
+                    .modal-card__right
+                        .modal-card__item-name Майка классическая мужская
+                        .modal-card__item-sizes
+                            ul
+                                li.modal-card__item-size.modal-card__item-size--first: span Размеры:
+                                li.modal-card__item-size: span S (46)
+                                li.modal-card__item-size: span M (48)
+                                li.modal-card__item-size: span L (50)
+                                li.modal-card__item-size: span XL (52)
+                                li.modal-card__item-size: span XXL (54)
+                        .modal-card__descr
+                            p.modal-card__type: span Тип ткани: #[span Кулирка]
+                            p.modal-card__sostav: span Состав: #[span Хлопок 100%]
+                            p.modal-card__plotnost: span Плотность материала: #[span 120]
+                        .modal-card__price-table
+                            table.modal-card__table
+                                thead
+                                    tr
+                                        td 1-9
+                                        td 10-49
+                                        td 50-249
+                                        td 250-499
+                                        td 500-999
+                                        td от 1000
+                                tbody
+                                    tr
+                                        td 95 p.
+                                        td 85 p.
+                                        td 80 p.
+                                        td 75 p.
+                                        td 70 p.
+                                        td Договорная p.
+                        .modal-card__form
+                            input.modal-card__input(type="text" value="введите ваш телефон")
+                            a.modal-card__btn.btn.btn--blue(href="#") заказать
+
+
+
+
+
+
+                    //- .modal-card__header: h3 нет времени ознакомится с предложением?
+                    //- .modal-card__body
+                    //-     p Оставьте ваш email и мы вышлем предложение на почту
+                    //-     p Вы сможете ознакомится с ним, когда вам будет удобно
+                    //- .modal-card__form
+                    //-     input.modal-card__input(type="text" value="введите ваш email")
+                    //-     a.modal-card__btn.btn--blue(href="#") ОСТАВИТЬ EMAIL
+
 
         .modal-havent-time__wrp
             .modal-havent-time
@@ -164,22 +231,22 @@ html.no-js
                     .tshirt-section__container
                         h3.tshirt-section__header: span Майки
                         ul.tshirt-section__items
-                            li.tshirt-section__item
+                            li.tshirt-section__item(data-link="data/items.json")
                                 .tshirt-section__img-wrapper
                                     img(src="images/sale-img-1.png")
                                 .tshirt-section__description
                                     p.tshirt-section__name Майка женская
-                                    p.tshirt-section__articul 101
+                                    p.tshirt-section__articul 1
                                     p.tshirt-section__price ОТ 100 РУБ
                                     p.tshirt-section__more
                                         a(href="#") 
                                             i
                                             span подробнее
-                            li.tshirt-section__item
+                            li.tshirt-section__item(data-link="data/items.json")
                                 .tshirt-section__img-wrapper
                                     img(src="images/sale-img-2.png")
                                 .tshirt-section__description
-                                    p.tshirt-section__name Майка женская
+                                    p.tshirt-section__name Майка мужская
                                     p.tshirt-section__articul 101
                                     p.tshirt-section__price ОТ 100 РУБ
                                     p.tshirt-section__more

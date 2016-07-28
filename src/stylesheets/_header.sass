@@ -2,12 +2,11 @@
   &__container
     @extend %container
     +clearfix()
-    padding-bottom: 150px
+    padding-bottom: 73px
   &__wrp
-    //width: 1336px
     margin: 0 auto
-    background: #e1e1e1 url('../images/header-bg.png') no-repeat
-    background-size: cover
+    background: url("../images/header-man-bg.png") no-repeat
+    background-size: contain
   &__right
     +clearfix()
     width: 478px
@@ -30,6 +29,10 @@
       font-family: $fontSemiBold
       font-size: 15px
       text-transform: uppercase
+    a 
+      @extend %btn--red
+      &:hover
+        background-color: darken(#bb605c, 10%)
   &__other
     margin-top: 45px
     text-align: center
@@ -91,12 +94,15 @@
     font-size: 0
     margin-top: 77px
     a
+      @extend %btn--red
       padding: 0
       width: 45%
       font-size: 12px
       text-align: center
       text-transform: uppercase
       font-family: $fontRegular
+      &:hover
+        background-color: darken(#bb605c, 10%)
       &:nth-child(2)
         margin-left: 10%
 
@@ -131,7 +137,7 @@
   &__link
     color: #000000
     transition: color .3s ease-in-out, text-decoration .2s ease
-    font-family: $fontMedium
+    font-family: $fontRegular
     &:hover
       text-decoration: underline
       color: #aa2230

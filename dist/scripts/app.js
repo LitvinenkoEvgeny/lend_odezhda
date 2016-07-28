@@ -81,6 +81,10 @@
 
 	    (0, _modals2.default)('.header__buttons a:last-child', 'div.modal-havent-time');
 	    (0, _inputValue2.default)('.modal-havent-time__form');
+
+	    // карточка товара
+	    (0, _modals2.default)('section ul li:not(.top-section__item)', '.modal-card');
+	    (0, _inputValue2.default)('.modal-card__form');
 	});
 
 /***/ },
@@ -12499,8 +12503,23 @@
 	    var $modal = (0, _jquery2.default)(modalBoxSelector);
 	    var $closeBtn = $modal.children('.close');
 
-	    $elem.on('click', function () {
+	    $elem.on('click', function (e) {
 	        $modal.arcticmodal(modalSettings);
+
+	        if (modalBoxSelector === '.modal-card') {
+	            var $target = (0, _jquery2.default)(e.currentTarget);
+	            var startImg = (0, _jquery2.default)('img', $target);
+	            var link = $target.data('link');
+	            var modalOptions = {
+	                $target: $target,
+	                $modal: $modal,
+	                startImg: startImg,
+	                link: link
+	            };
+
+	            modalCardInit(modalOptions);
+	        }
+
 	        return false;
 	    });
 
@@ -12526,13 +12545,155 @@
 	    overlay: {
 	        css: {
 	            backgroundColor: '#fff',
-	            // backgroundImage: 'url(images/overlay.png)',
-	            // backgroundRepeat: 'repeat',
-	            // backgroundPosition: '50% 0',
 	            opacity: .75
 	        }
 	    }
 	};
+
+	function modalCardInit(modalOptions) {
+	    var $target = modalOptions.$target;
+	    var startImg = modalOptions.startImg;
+	    var link = modalOptions.link;
+	    var $modal = modalOptions.$modal;
+
+
+	    if (link) {
+	        generateHtml(modalOptions);
+	    }
+	}
+
+	function generateHtml(modalOptions) {
+	    var $target = modalOptions.$target;
+	    var startImg = modalOptions.startImg;
+	    var link = modalOptions.link;
+	    var $modal = modalOptions.$modal;
+	    var item = void 0;
+
+	    _jquery2.default.get(link, function (success) {
+	        var itemName = (0, _jquery2.default)('div p:nth-child(1)', $target).text().trim();
+	        item = findItem(itemName, success)[0];
+	        createHtml(item);
+	    });
+
+	    function findItem(name, items) {
+	        return items.items.filter(function (i) {
+	            return i.name === name;
+	        });
+	    };
+
+	    function createHtml(item) {
+	        var $modalImg = (0, _jquery2.default)('.modal-card__img', $modal);
+	        var $modalColors = (0, _jquery2.default)('.modal-card__image-colors ul', $modal);
+	        var $modalSizes = (0, _jquery2.default)('.modal-card__item-sizes ul', $modal);
+	        var $type = (0, _jquery2.default)('.modal-card__type span span', $modal);
+	        var $sostav = (0, _jquery2.default)('.modal-card__sostav span span', $modal);
+	        var $plotnost = (0, _jquery2.default)('.modal-card__plotnost span span', $modal);
+	        var $thead = (0, _jquery2.default)('.modal-card__table thead tr', $modal);
+	        var $tbody = (0, _jquery2.default)('.modal-card__table tbody tr', $modal);
+
+	        $modalColors.html('');
+	        $modalSizes.html('');
+	        $modalSizes.append("<li class=\"modal-card__item-size modal-card__item-size--first\"><span>Размеры:</span></li>");
+	        $thead.html('');
+	        $tbody.html('');
+
+	        $modalImg.attr('src', (0, _jquery2.default)(startImg).attr('src'));
+	        (0, _jquery2.default)('.modal-card__item-name', $modal).text(item.name);
+
+	        var _iteratorNormalCompletion = true;
+	        var _didIteratorError = false;
+	        var _iteratorError = undefined;
+
+	        try {
+	            for (var _iterator = item.colors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                var c = _step.value;
+
+	                var key = Object.keys(c)[0];
+	                var value = c[key];
+	                $modalColors.append("<li class=\"modal-card__image-color modal-card__image-color--" + key + "\" data-image=\"" + value + "\"></li>");
+	            }
+	        } catch (err) {
+	            _didIteratorError = true;
+	            _iteratorError = err;
+	        } finally {
+	            try {
+	                if (!_iteratorNormalCompletion && _iterator.return) {
+	                    _iterator.return();
+	                }
+	            } finally {
+	                if (_didIteratorError) {
+	                    throw _iteratorError;
+	                }
+	            }
+	        }
+
+	        ;
+
+	        var _iteratorNormalCompletion2 = true;
+	        var _didIteratorError2 = false;
+	        var _iteratorError2 = undefined;
+
+	        try {
+	            for (var _iterator2 = item.sizes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	                var size = _step2.value;
+
+	                $modalSizes.append("<li class=\"modal-card__item-size\">" + size + "</li>");
+	            }
+	        } catch (err) {
+	            _didIteratorError2 = true;
+	            _iteratorError2 = err;
+	        } finally {
+	            try {
+	                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                    _iterator2.return();
+	                }
+	            } finally {
+	                if (_didIteratorError2) {
+	                    throw _iteratorError2;
+	                }
+	            }
+	        }
+
+	        ;
+
+	        $type.html(item.type);
+	        $sostav.html(item.sostav);
+	        $plotnost.html(item.plotnost);
+
+	        var _iteratorNormalCompletion3 = true;
+	        var _didIteratorError3 = false;
+	        var _iteratorError3 = undefined;
+
+	        try {
+	            for (var _iterator3 = Object.keys(item.price)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	                var _key = _step3.value;
+
+	                $thead.append("<td>" + _key + "</td>");
+	                $tbody.append("<td>" + item.price[_key] + "</td>");
+	            }
+	        } catch (err) {
+	            _didIteratorError3 = true;
+	            _iteratorError3 = err;
+	        } finally {
+	            try {
+	                if (!_iteratorNormalCompletion3 && _iterator3.return) {
+	                    _iterator3.return();
+	                }
+	            } finally {
+	                if (_didIteratorError3) {
+	                    throw _iteratorError3;
+	                }
+	            }
+	        }
+
+	        ;
+
+	        $modalColors.children('li').on("click", function (e) {
+	            var li = (0, _jquery2.default)(e.currentTarget);
+	            $modalImg.attr('src', li.data('image'));
+	        });
+	    }
+	}
 
 /***/ },
 /* 14 */

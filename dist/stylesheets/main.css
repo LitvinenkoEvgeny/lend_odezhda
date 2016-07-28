@@ -252,7 +252,7 @@ a {
   transition: color .3s ease-in, background-color .4s ease-out;
 }
 
-.btn:hover {
+.btn:hover, .header__phones a, .header__buttons a {
   background-color: #bb605c;
   color: #fff;
 }
@@ -384,12 +384,12 @@ a {
 .header__container {
   overflow: hidden;
   *zoom: 1;
-  padding-bottom: 150px;
+  padding-bottom: 73px;
 }
 .header__wrp {
   margin: 0 auto;
-  background: #e1e1e1 url("../images/header-bg.png") no-repeat;
-  background-size: cover;
+  background: url("../images/header-man-bg.png") no-repeat;
+  background-size: contain;
 }
 .header__right {
   overflow: hidden;
@@ -417,6 +417,9 @@ a {
   font-family: "RalewaySemiBold", "Arial", "Verdana", sans-serif;
   font-size: 15px;
   text-transform: uppercase;
+}
+.header__phones a:hover {
+  background-color: #a14743;
 }
 .header__other {
   margin-top: 45px;
@@ -495,6 +498,9 @@ a {
   text-transform: uppercase;
   font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
 }
+.header__buttons a:hover {
+  background-color: #a14743;
+}
 .header__buttons a:nth-child(2) {
   margin-left: 10%;
 }
@@ -533,7 +539,7 @@ a {
 .nav__link {
   color: #000000;
   transition: color 0.3s ease-in-out, text-decoration 0.2s ease;
-  font-family: "RalewayMedium", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
 }
 .nav__link:hover {
   text-decoration: underline;
@@ -611,6 +617,7 @@ a {
 .top-section__btn {
   width: 106px;
   padding: 0;
+  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
 }
 
 .explain-section__container {
@@ -675,7 +682,7 @@ a {
 .explain-section__name {
   text-align: center;
   color: black;
-  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 1px;
@@ -696,7 +703,7 @@ a {
 .explain-section__description p {
   margin: 30px 0;
   color: #3a3a3a;
-  font-family: "RalewayMedium", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
   font-size: 16px;
   letter-spacing: 1px;
 }
@@ -747,7 +754,7 @@ a {
   padding: 10px 5px;
   color: #a2a2a2;
   text-align: center;
-  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
   font-size: 14px;
   line-height: 15px;
   font-variant: small-caps;
@@ -756,7 +763,7 @@ a {
   width: 31.6913%;
   padding: 0;
   text-align: center;
-  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
   font-variant: small-caps;
   background-color: #4b88a8;
   font-size: 12px;
@@ -826,6 +833,7 @@ a {
   transition: transform .4s ease-in-out;
   background: #fff;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .tshirt-section__item:hover {
   transform: scale(1.2);
@@ -942,6 +950,7 @@ a {
   transition: transform .4s ease-in-out;
   background: #fff;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .footbalTshirt-section__item:hover {
   transform: scale(1.2);
@@ -1054,6 +1063,7 @@ a {
   transition: transform .4s ease-in-out;
   background: #fff;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .polo-section__item:hover {
   transform: scale(1.2);
@@ -1166,6 +1176,7 @@ a {
   transition: transform .4s ease-in-out;
   background: #fff;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .switshots-section__item:hover {
   transform: scale(1.2);
@@ -1278,6 +1289,7 @@ a {
   transition: transform .4s ease-in-out;
   background: #fff;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .shorts-section__item:hover {
   transform: scale(1.2);
@@ -1390,6 +1402,7 @@ a {
   transition: transform .4s ease-in-out;
   background: #fff;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .wears-section__item:hover {
   transform: scale(1.2);
@@ -1456,7 +1469,7 @@ a {
 }
 .custom-section__form h2 {
   color: black;
-  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
   font-size: 36px;
   font-weight: 300;
   line-height: 60px;
@@ -1476,7 +1489,7 @@ a {
   padding: 10px 5px;
   color: #a2a2a2;
   text-align: center;
-  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
   font-size: 14px;
   line-height: 15px;
   font-variant: small-caps;
@@ -1486,7 +1499,7 @@ a {
   margin-left: 1.80851%;
   padding: 0;
   text-align: center;
-  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
   font-variant: small-caps;
   background-color: #4b88a8;
   font-size: 12px;
@@ -1871,7 +1884,7 @@ body {
 .create-process__header h2 {
   margin: 0;
   color: white;
-  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
+  font-family: "RalewaySemiBold", "Arial", "Verdana", sans-serif;
   font-size: 36px;
   font-weight: 600;
   line-height: 48px;
@@ -1935,7 +1948,7 @@ body {
 }
 .footer__big-text {
   color: white;
-  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
+  font-family: "RalewaySemiBold", "Arial", "Verdana", sans-serif;
   line-height: 36px;
 }
 .footer__big-text h2, .footer__big-text h3 {
@@ -1955,7 +1968,7 @@ body {
   position: absolute;
   right: -80px;
   top: 30px;
-  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
+  font-family: "RalewaySemiBold", "Arial", "Verdana", sans-serif;
   font-size: 160px;
   font-weight: 600;
   line-height: 36px;
@@ -1973,7 +1986,7 @@ body {
   padding: 10px 5px;
   color: #a2a2a2;
   text-align: center;
-  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
   font-size: 14px;
   line-height: 15px;
   font-variant: small-caps;
@@ -1983,7 +1996,7 @@ body {
   margin-left: 17px;
   padding: 0;
   text-align: center;
-  font-family: "RalewayLight", "Arial", "Verdana", sans-serif;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
   font-variant: small-caps;
   background-color: #4b88a8;
   font-size: 12px;
@@ -2072,6 +2085,158 @@ body {
   background-color: #5699bd;
   margin: 0 auto;
   font-family: Raleway;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  font-variant: small-caps;
+}
+
+.modal-card__wrp {
+  display: none;
+}
+.modal-card:not(a) {
+  position: relative;
+  width: 911px;
+  height: 483px;
+  padding: 55px 63px 68px 55px;
+  box-sizing: border-box;
+  background-color: white;
+  border: 2px solid #dedede;
+}
+.modal-card__wrp {
+  display: none;
+}
+.modal-card__close {
+  position: absolute;
+  right: -27px;
+  top: -27px;
+  width: 54px;
+  height: 54px;
+  line-height: 46px;
+  cursor: pointer;
+  border-radius: 50%;
+  text-align: center;
+  background-color: white;
+  border: 3px solid #5699bd;
+  color: #3a7594;
+  font-family: "SegoeUIRegular", "Arial", "Verdana", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+.modal-card__left {
+  display: inline-block;
+  width: 229px;
+  margin-right: 70px;
+  text-align: center;
+}
+.modal-card__right {
+  display: inline-block;
+  width: 485px;
+  color: #4f4d4d;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
+  vertical-align: top;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  font-variant: small-caps;
+}
+.modal-card__img {
+  height: 250px;
+}
+.modal-card__image-colors {
+  display: inline-block;
+  margin-top: 38px;
+}
+.modal-card__image-colors ul {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+.modal-card__image-color {
+  display: inline-block;
+  width: 19px;
+  height: 18px;
+  cursor: pointer;
+  background-color: blue;
+  border-radius: 50%;
+}
+.modal-card__image-color:not(:last-child) {
+  margin-right: 11px;
+}
+.modal-card__image-color--orange {
+  background-color: #f38900;
+}
+.modal-card__image-color--blue {
+  background-color: #5fa7d1;
+}
+.modal-card__image-color--purple {
+  background-color: #b8226d;
+}
+.modal-card__image-color--green {
+  background-color: #18b141 7px;
+}
+.modal-card__item-name {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 18px;
+  font-variant: small-caps;
+}
+.modal-card__item-sizes {
+  font-size: 0;
+  margin-top: 25px;
+}
+.modal-card__item-sizes ul {
+  margin: 0;
+  padding: 0;
+}
+.modal-card__item-size {
+  font-size: 14px;
+  display: inline-block;
+  border: 1px solid #919191;
+  padding: 9px 8.5px;
+}
+.modal-card__item-size:not(:last-child) {
+  margin-right: 12px;
+}
+.modal-card__item-size--first {
+  border: none;
+  padding-left: 0;
+}
+.modal-card__descr {
+  margin: 20px 0 22px;
+}
+.modal-card__descr p {
+  margin: 0;
+  font-size: 14px;
+}
+.modal-card__table td {
+  border: 1px solid #9b9b9b;
+  vertical-align: middle;
+  text-align: center;
+  padding: 8px 13px;
+}
+.modal-card__form {
+  margin-top: 30px;
+}
+.modal-card__input {
+  width: 270px;
+  line-height: 30px;
+  outline: none;
+  text-align: center;
+  border: 1px solid #999;
+  color: #a2a2a2;
+  font-family: "RalewayRegular", "Arial", "Verdana", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 17px 0 0;
+}
+.modal-card__btn {
+  width: 190px;
+  line-height: 34px !important;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  background-color: #5699bd;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;

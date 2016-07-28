@@ -15,4 +15,9 @@ $(document).ready(function() {
 
     addModal('.header__buttons a:last-child', 'div.modal-havent-time');
     inputCursor('.modal-havent-time__form');
+
+
+    // карточка товара
+    addModal('section ul li:not(.top-section__item)', '.modal-card');
+    inputCursor('.modal-card__form');
 });
