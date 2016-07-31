@@ -74,6 +74,14 @@
 
 	var _modals2 = _interopRequireDefault(_modals);
 
+	var _scrollAnimate = __webpack_require__(21);
+
+	var _scrollAnimate2 = _interopRequireDefault(_scrollAnimate);
+
+	var _sectionScrollAnimate = __webpack_require__(22);
+
+	var _sectionScrollAnimate2 = _interopRequireDefault(_sectionScrollAnimate);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(0, _jquery2.default)(document).ready(function () {
@@ -90,6 +98,16 @@
 	  // карточка товара
 	  (0, _modals2.default)('section ul li:not(.top-section__item)', '.modal-card');
 	  (0, _inputValue2.default)('.modal-card__form');
+
+	  // оставить заявку
+	  (0, _modals2.default)('.iwant', '.modal-contact');
+	  (0, _inputValue2.default)('.modal-contact__form');
+
+	  (0, _modals2.default)('.director-connect__btn', '.modal-thank-you');
+	  (0, _modals2.default)('.custom-section__btn', '.modal-thank-you');
+	  (0, _modals2.default)('.modal-contact__btn', '.modal-thank-you');
+	  (0, _modals2.default)('.footer__btn', '.modal-thank-you');
+	  (0, _modals2.default)('.modal-card__btn', '.modal-thank-you');
 	});
 
 /***/ },
@@ -10224,16 +10242,18 @@
 	exports.default = function () {
 	    (0, _jquery2.default)(document).ready(function () {
 	        // вам перезвонить ?
-	        (0, _jquery2.default)('.header__phones a').click(function () {
+	        (0, _jquery2.default)('.header__phones a.btn').click(function () {
 	            (0, _jquery2.default)('html, body').animate({
 	                scrollTop: (0, _jquery2.default)('.footer__container').offset().top
 	            }, 2000);
+	            return false;
 	        });
 	        //  посмотреть цены
 	        (0, _jquery2.default)('.header__buttons a:first-child').click(function () {
 	            (0, _jquery2.default)('html, body').animate({
 	                scrollTop: (0, _jquery2.default)('.top-section').offset().top - 69
 	            }, 2000);
+	            return false;
 	        });
 
 	        // майки
@@ -10241,6 +10261,7 @@
 	            (0, _jquery2.default)('html, body').animate({
 	                scrollTop: (0, _jquery2.default)('.tshirt-section__container').offset().top - 69
 	            }, 2000);
+	            return false;
 	        });
 
 	        // Футболки
@@ -10248,6 +10269,7 @@
 	            (0, _jquery2.default)('html, body').animate({
 	                scrollTop: (0, _jquery2.default)('.footbalTshirt-section__container').offset().top - 69
 	            }, 2000);
+	            return false;
 	        });
 
 	        // поло
@@ -10255,6 +10277,7 @@
 	            (0, _jquery2.default)('html, body').animate({
 	                scrollTop: (0, _jquery2.default)('.polo-section__container').offset().top - 69
 	            }, 2000);
+	            return false;
 	        });
 
 	        // свитшоты
@@ -10262,6 +10285,7 @@
 	            (0, _jquery2.default)('html, body').animate({
 	                scrollTop: (0, _jquery2.default)('.switshots-section__container').offset().top - 69
 	            }, 2000);
+	            return false;
 	        });
 
 	        // толстовки
@@ -10269,6 +10293,7 @@
 	            (0, _jquery2.default)('html, body').animate({
 	                scrollTop: (0, _jquery2.default)('.wears-section__container').offset().top - 69
 	            }, 2000);
+	            return false;
 	        });
 
 	        // трусы
@@ -10276,6 +10301,7 @@
 	            (0, _jquery2.default)('html, body').animate({
 	                scrollTop: (0, _jquery2.default)('.shorts-section__container').offset().top - 69
 	            }, 2000);
+	            return false;
 	        });
 	    });
 	};
@@ -12577,6 +12603,7 @@
 	  $elem.on('click', function (e) {
 
 	    if (modalBoxSelector === '.modal-card') {
+	      var $modalButton = (0, _jquery2.default)('.modal-card__btn', $modal);
 	      var $target = (0, _jquery2.default)(e.currentTarget);
 	      var startImg = (0, _jquery2.default)('img', $target);
 	      var link = $target.data('link');
@@ -12592,6 +12619,24 @@
 
 	      $modal.arcticmodal(itemModalOptions);
 	      modalCardInit(modalOptions);
+
+	      $modalButton.on('click', function () {
+	        $modal.arcticmodal('close');
+	        return false;
+	      });
+
+	      return false;
+	    }
+
+	    if (modalBoxSelector === '.modal-contact') {
+	      var _$modalButton = (0, _jquery2.default)('.modal-contact__btn', $modal);
+	      $modal.arcticmodal(modalSettings);
+
+	      _$modalButton.on('click', function () {
+	        $modal.arcticmodal('close');
+	        return false;
+	      });
+
 	      return false;
 	    }
 
@@ -13375,6 +13420,192 @@
 	    }
 	})(jQuery);
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _jquery = __webpack_require__(1);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	(0, _jquery2.default)(document).ready(function () {
+	    var $animation_elements = (0, _jquery2.default)('.top-section');
+	    var $window = (0, _jquery2.default)(window);
+	    $window.on('scroll resize', check_if_in_view);
+	    $window.trigger('scroll');
+
+	    function check_if_in_view() {
+	        var window_height = $window.height();
+	        var window_top_position = $window.scrollTop();
+	        var window_bottom_position = window_top_position + window_height;
+
+	        _jquery2.default.each($animation_elements, function () {
+	            var $element = (0, _jquery2.default)(this);
+	            var element_height = $element.outerHeight();
+	            var element_top_position = $element.offset().top;
+	            var element_bottom_position = element_top_position + element_height;
+	            var $animatedItems = (0, _jquery2.default)('li', $element);
+
+	            //check to see if this current container is within viewport
+	            if (isScrolledIntoView($element)) {
+	                (function () {
+	                    var delay = 150;
+	                    setTimeout(function () {
+	                        $animatedItems.each(function (index, item) {
+	                            delay += 100;
+	                            setTimeout(function () {
+	                                var $item = (0, _jquery2.default)(item);
+	                                $item.addClass('animated zoomIn');
+	                            }, delay);
+	                        });
+	                    }, 150);
+	                    // $element.addClass('animated zoomIn');
+	                })();
+	            } else {
+	                $animatedItems.each(function (index, item) {
+	                    var $item = (0, _jquery2.default)(item);
+	                    $item.removeClass('animated zoomIn');
+	                });
+	            }
+	        });
+	    }
+	});
+	function isScrolledIntoView(elem) {
+	    var docViewTop = (0, _jquery2.default)(window).scrollTop();
+	    var docViewBottom = docViewTop + (0, _jquery2.default)(window).height();
+
+	    var elemTop = (0, _jquery2.default)(elem).offset().top;
+	    var elemBottom = elemTop + (0, _jquery2.default)(elem).height();
+
+	    return elemBottom <= docViewBottom && elemTop >= docViewTop;
+	}
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _jquery = __webpack_require__(1);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var visible = __webpack_require__(23)(_jquery2.default);
+
+	(0, _jquery2.default)(document).ready(function () {
+	  var $animation_elements = (0, _jquery2.default)('.tshirt-section__header, .footbalTshirt-section__header, .polo-section__header, .switshots-section__header, .shorts-section__header, .wears-section__header');
+	  var $window = (0, _jquery2.default)(window);
+	  $window.on('scroll resize', check_if_in_view);
+	  $window.trigger('scroll');
+
+	  function check_if_in_view() {
+	    var window_height = $window.height();
+	    var window_top_position = $window.scrollTop();
+	    var window_bottom_position = window_top_position + window_height;
+
+	    _jquery2.default.each($animation_elements, function () {
+	      var $element = (0, _jquery2.default)(this);
+	      var element_height = $element.outerHeight();
+	      var element_top_position = $element.offset().top;
+	      var element_bottom_position = element_top_position + element_height;
+	      var $before = (0, _jquery2.default)('div:first-child', $element);
+	      var $after = (0, _jquery2.default)('div:last-child', $element);
+
+	      //check to see if this current container is within viewport
+	      if (isScrolledIntoView($before)) {
+	        $before.addClass('animated zoomIn');
+	        $after.addClass('animated zoomIn');
+	      } else {
+	        $before.removeClass('animated zoomIn');
+	        $after.removeClass('animated zoomIn');
+	      }
+	    });
+	  }
+
+	  function elementInViewport2(el) {
+	    var top = el.offsetTop;
+	    var left = el.offsetLeft;
+	    var width = el.offsetWidth;
+	    var height = el.offsetHeight;
+
+	    while (el.offsetParent) {
+	      el = el.offsetParent;
+	      top += el.offsetTop;
+	      left += el.offsetLeft;
+	    }
+
+	    console.log(top < window.pageYOffset + window.innerHeight && left < window.pageXOffset + window.innerWidth && top + height > window.pageYOffset && left + width > window.pageXOffset);
+	    return top < window.pageYOffset + window.innerHeight && left < window.pageXOffset + window.innerWidth && top + height > window.pageYOffset && left + width > window.pageXOffset;
+	  }
+	});
+
+	function isScrolledIntoView(elem) {
+	  var docViewTop = (0, _jquery2.default)(window).scrollTop();
+	  var docViewBottom = docViewTop + (0, _jquery2.default)(window).height();
+
+	  var elemTop = (0, _jquery2.default)(elem).offset().top;
+	  var elemBottom = elemTop + (0, _jquery2.default)(elem).height();
+
+	  return elemBottom <= docViewBottom && elemTop >= docViewTop;
+	}
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var $
+
+	/* via https://stackoverflow.com/questions/123999/
+	  how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport/7557433#7557433
+	*/
+
+	function inViewport(el){
+	  var height = (window.innerHeight || document.documentElement.clientHeight) /*or $(window).height() */
+	    , width = (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+	    , rect
+
+	  // special bonus for those using jQuery
+	  if ($ && el instanceof $) el = el[0]
+
+	  rect = el.getBoundingClientRect()
+
+	  return (
+	      rect.top >= 0
+	      && rect.left >= 0
+	      && rect.bottom <= height
+	      && rect.right <= width
+	    )
+	}
+
+	// via https://stackoverflow.com/questions/6597904/scrollable-div-which-elements-can-be-seen
+	function inContainer($el, $parent){
+	  if (!$) throw new Error('Must have a DOM library')
+
+	  $parent || ($parent = $el.parent())
+
+	  return $el.position().top + $el.height() > 0 && $el.position().top < $parent.height()
+	}
+
+	// allow users to set their own DOM library (like jquery), or… not
+	module.exports = function viewableElement(domLib){
+	  $ = domLib
+	  return {
+	    inViewport: inViewport
+	    , inContainer: inContainer
+	  }
+	}
+
+	module.exports.$ = $
+
 
 /***/ }
 /******/ ]);

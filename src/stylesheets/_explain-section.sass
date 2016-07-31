@@ -15,7 +15,30 @@
       top: 20px
   &__delimiter
     position: relative
+    &--before
+      position: absolute
+      background-color: #000
+      display: inline-block
+      height: 2px
+      width: 40%
+      left: 0
+      position: absolute
+      z-index: -1
+      top: 30px
+      background-color: #4b85c2
+    &--after
+      position: absolute
+      background-color: #000
+      display: inline-block
+      height: 2px
+      width: 40%
+      right: 0
+      position: absolute
+      z-index: -1
+      top: 30px
+      background-color: #4b85c2
     h2
+      z-index: 3
       color: #4b85c2
       margin-top: 0
       font-family: $fontBold
@@ -24,23 +47,23 @@
       line-height: 60px
       display: inline-block
       background: #ffffff
-    &::after
-      content: ""
-      display: inline-block
-      height: 2px
-      width: 40%
-      position: absolute
-      top: 30px
-      background-color: #4b85c2
-    &::before
-      content: ""
-      display: inline-block
-      height: 2px
-      width: 40%
-      position: absolute
-      left: -39px
-      top: 30px
-      background-color: #4b85c2
+    // &::after
+    //   content: ""
+    //   display: inline-block
+    //   height: 2px
+    //   width: 40%
+    //   position: absolute
+    //   top: 30px
+    //   background-color: #4b85c2
+    // &::before
+    //   content: ""
+    //   display: inline-block
+    //   height: 2px
+    //   width: 40%
+    //   position: absolute
+    //   left: -39px
+    //   top: 30px
+    //   background-color: #4b85c2
   &__content
     font-size: 0
   &__director, &__description

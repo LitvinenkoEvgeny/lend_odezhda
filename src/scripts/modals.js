@@ -29,6 +29,7 @@ export default function (clickElemSelector, modalBoxSelector) {
   $elem.on('click', (e) => {
 
     if (modalBoxSelector === '.modal-card') {
+      const $modalButton = $('.modal-card__btn', $modal);
       let $target = $(e.currentTarget);
       let startImg = $('img', $target);
       let link = $target.data('link');
@@ -42,6 +43,26 @@ export default function (clickElemSelector, modalBoxSelector) {
 
       $modal.arcticmodal(itemModalOptions);
       modalCardInit(modalOptions);
+
+
+
+      $modalButton.on('click', () => {
+        $modal.arcticmodal('close');
+        return false;
+      });
+
+      return false;
+    }
+
+    if(modalBoxSelector === '.modal-contact'){
+      const $modalButton = $('.modal-contact__btn', $modal);
+      $modal.arcticmodal(modalSettings);
+
+      $modalButton.on('click', () => {
+        $modal.arcticmodal('close');
+        return false;
+      });
+
       return false;
     }
     

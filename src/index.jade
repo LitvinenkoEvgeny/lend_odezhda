@@ -1,4 +1,3 @@
-doctype
 html.no-js
     head
         meta(charset='utf-8')
@@ -90,6 +89,30 @@ html.no-js
                     //-     a.modal-card__btn.btn--blue(href="#") ОСТАВИТЬ EMAIL
 
 
+
+        .modal-contact__wrp
+            .modal-contact
+                .modal-contact__close.close X
+                .modal-contact__content
+                    .modal-contact__header.modal-contact__header--phone-icon: h3 Оставьте заявку
+                    .modal-contact__body
+                        p Введите ваш телефон, чтобы менеджер мог вам перезвонить и 
+                        p предложить наиболее выгодные условия
+                    .modal-contact__form
+                        input.modal-contact__input(type="text" value="введите ваш телефон")
+                        a.modal-contact__btn.btn--blue(href="#") ОСТАВИТЬ ЗАЯВКУ
+
+
+        .modal-thank-you__wrp
+            .modal-thank-you.modal-thank-you--more-tpadding
+                .modal-thank-you__close.close X
+                .modal-thank-you__content
+                    .modal-thank-you__body.modal-thank-you__body--big-text
+                        p Спасибо что выбрали компанию GaratTex!
+                        p Наш менеджер свяжется с вами
+                        p В ближайшее время!
+
+
         .modal-havent-time__wrp
             .modal-havent-time
                 .modal-havent-time__close.close X
@@ -113,8 +136,8 @@ html.no-js
                                     span.little 8.00
                                     span до
                                     span.little 23.00
-                                p 8 (919) 636 80 08
-                                p 8 (919) 636 80 08
+                                p: a(href="tel:89196368008") 8 (919) 636 80 08
+                                p: a(href="tel:89196368008") 8 (919) 636 80 08
                                 a.btn.btn--red(href="#") вам перезвонить ?
                             .header__other
                                 h2 Дешевая
@@ -151,8 +174,8 @@ html.no-js
                                 p Звоните:
                                 p с 8.00 до 23.00
                             .nav__phones
-                                p 8 (843) 245-27-00
-                                p 8 (919) 636-80-08
+                                p: a(href="tel:88432452700") 8 (843) 245-27-00
+                                p: a(href="tel:89196368008") 8 (919) 636-80-08
 
         .top-section__wrp
             section
@@ -202,8 +225,10 @@ html.no-js
                     .explain-section__container
                         .explain-section__header
                             h5 С НАМИ ВЫ ЗАРАБАТЫВАЕТЕ
-                            .explain-section__delimiter
+                            .explain-section__delimiter.del
+                                .explain-section__delimiter--before.del__before
                                 h2 БОЛЬШЕ
+                                .explain-section__delimiter--after.del__after
                         .explain-section__content
                             .explain-section__director
                                 img(src="images/director.png")
@@ -238,7 +263,10 @@ html.no-js
             section
                 .tshirt-section
                     .tshirt-section__container
-                        h3.tshirt-section__header: span Майки
+                        h3.tshirt-section__header
+                            .tshirt-section__before
+                            span Майки
+                            .tshirt-section__after
                         ul.tshirt-section__items
                             li.tshirt-section__item(data-link="data/майка мужская.json")
                                 .tshirt-section__img-wrapper
@@ -290,7 +318,10 @@ html.no-js
             section
                 .footbalTshirt-section
                     .footbalTshirt-section__container
-                        h3.footbalTshirt-section__header: span Футболки
+                        h3.footbalTshirt-section__header
+                            .footbalTshirt-section__before
+                            span Футболки
+                            .footbalTshirt-section__after
                         ul.footbalTshirt-section__items
                             li.footbalTshirt-section__item(data-link="data/футболка1.json")
                                 .footbalTshirt-section__img-wrapper
@@ -387,7 +418,10 @@ html.no-js
             section
                 .polo-section
                     .polo-section__container
-                        h3.polo-section__header: span Поло
+                        h3.polo-section__header
+                            .polo-section__before
+                            span Поло
+                            .polo-section__after
                         ul.polo-section__items
                             li.polo-section__item(data-link="data/поло1.json")
                                 .polo-section__img-wrapper
@@ -439,7 +473,10 @@ html.no-js
             section
                 .switshots-section
                     .switshots-section__container
-                        h3.switshots-section__header: span Свитшоты
+                        h3.switshots-section__header
+                            .switshots-section__before
+                            span Свитшоты
+                            .switshots-section__after
                         ul.switshots-section__items
                             li.switshots-section__item(data-link="data/свитшот1.json")
                                 .switshots-section__img-wrapper
@@ -490,7 +527,10 @@ html.no-js
             section
                 .shorts-section
                     .shorts-section__container
-                        h3.shorts-section__header: span Трусы
+                        h3.shorts-section__header
+                            .shorts-section__before
+                            span Трусы
+                            .shorts-section__after
                         ul.shorts-section__items.shorts-section__items--centralize-items
                             li.shorts-section__item(data-link="data/трусы.json")
                                 .shorts-section__img-wrapper
@@ -520,7 +560,10 @@ html.no-js
             section
                 .wears-section
                     .wears-section__container
-                        h3.wears-section__header: span Толстовки
+                        h3.wears-section__header
+                            .wears-section__before
+                            span Толстовки
+                            .wears-section__after
                         ul.wears-section__items
                             li.wears-section__item(data-link="data/толстовка1.json")
                                 .wears-section__img-wrapper
@@ -566,7 +609,7 @@ html.no-js
                                         a(href="#")
                                             i
                                             span подробнее
-                            li.wears-section__item.wears-section__item--bigger(data-link="data/толстовка5.json")
+                            li.wears-section__item.wears-section__item--bigger.wears-section__item--less-width(data-link="data/толстовка5.json")
                                 .wears-section__img-wrapper
                                     img(src="images/Толстовки/безрукавка - м.jpg")
                                 .wears-section__description
@@ -577,7 +620,7 @@ html.no-js
                                         a(href="#")
                                             i
                                             span подробнее
-                            li.wears-section__item.wears-section__item--bigger(data-link="data/толстовка6.json")
+                            li.wears-section__item.wears-section__item--bigger.wears-section__item--less-width(data-link="data/толстовка6.json")
                                 .wears-section__img-wrapper
                                     img(src="images/Толстовки/безрукавка - м.jpg")
                                 .wears-section__description
@@ -588,7 +631,7 @@ html.no-js
                                         a(href="#")
                                             i
                                             span подробнее
-                            li.wears-section__item.wears-section__item--bigger(data-link="data/толстовка7.json")
+                            li.wears-section__item.wears-section__item--bigger.wears-section__item--less-width(data-link="data/толстовка7.json")
                                 .wears-section__img-wrapper
                                     img(src="images/Толстовки/с капюшоном2 - ж.jpg")
                                 .wears-section__description
@@ -599,7 +642,7 @@ html.no-js
                                         a(href="#")
                                             i
                                             span подробнее
-                            li.wears-section__item.wears-section__item--bigger(data-link="data/толстовка8.json")
+                            li.wears-section__item.wears-section__item--bigger.wears-section__item--less-width(data-link="data/толстовка8.json")
                                 .wears-section__img-wrapper
                                     img(src="images/Толстовки/с капюшоном2 - ж.jpg")
                                 .wears-section__description
@@ -692,7 +735,7 @@ html.no-js
                     | 7 260 000 
                     span руб.
                   .iwant_wrap
-                    .iwant(onclick="$('#exampleModal3').arcticmodal()") хочу получить такую прибыль
+                    .iwant Оставить заявку
 
         .create-process__wrp
             section
@@ -710,7 +753,7 @@ html.no-js
                             .footer__top-text
                                 p
                                     i.footer__mail-icon
-                                    a(href="mailto:blabla@gmail.com") gtex@gmail.com
+                                    a(href="mailto:gtexru@gmail.com") gtexru@gmail.com 
                             .footer__big-text
                                 h2 ОСТАЛИСЬ ВОПРОСЫ
                                     span.footer__question-sign ?

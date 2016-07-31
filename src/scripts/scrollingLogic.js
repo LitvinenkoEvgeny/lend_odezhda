@@ -4,16 +4,18 @@ import $ from "jquery";
 export default function () {
     $(document).ready(function() {
         // вам перезвонить ?
-        $('.header__phones a').click(() => {
+        $('.header__phones a.btn').click(() => {
             $('html, body').animate({
                 scrollTop: $('.footer__container').offset().top
             }, 2000);
+            return false;
         });
         //  посмотреть цены
         $('.header__buttons a:first-child').click(() => {
             $('html, body').animate({
                 scrollTop: $('.top-section').offset().top - 69
             }, 2000);
+            return false;
         });
 
         // майки
@@ -21,6 +23,7 @@ export default function () {
             $('html, body').animate({
                 scrollTop: $('.tshirt-section__container').offset().top - 69
             }, 2000);
+            return false;
         });
 
         // Футболки
@@ -28,6 +31,7 @@ export default function () {
             $('html, body').animate({
                 scrollTop: $('.footbalTshirt-section__container').offset().top - 69
             }, 2000);
+            return false;
         });
 
 
@@ -36,6 +40,7 @@ export default function () {
             $('html, body').animate({
                 scrollTop: $('.polo-section__container').offset().top - 69
             }, 2000);
+            return false;
         });
 
         // свитшоты
@@ -43,6 +48,7 @@ export default function () {
             $('html, body').animate({
                 scrollTop: $('.switshots-section__container').offset().top - 69
             }, 2000);
+            return false;
         });
 
 
@@ -51,6 +57,7 @@ export default function () {
             $('html, body').animate({
                 scrollTop: $('.wears-section__container').offset().top - 69
             }, 2000);
+            return false;
         });
 
 
@@ -59,6 +66,7 @@ export default function () {
             $('html, body').animate({
                 scrollTop: $('.shorts-section__container').offset().top - 69
             }, 2000);
+            return false;
         });
 
     });

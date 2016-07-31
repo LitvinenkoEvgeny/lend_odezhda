@@ -69,7 +69,8 @@ gulp.task("js", function(callback) {
             new webpack.ProvidePlugin({
               "$":"jquery",
               "jQuery":"jquery",
-              "window.jQuery":"jquery"
+              "window.jQuery":"jquery",
+              "visible": "visible"
             }),
           ],
           module: {

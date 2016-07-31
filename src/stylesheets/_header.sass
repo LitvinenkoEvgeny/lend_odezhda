@@ -19,6 +19,9 @@
     box-sizing: border-box
     background: url("../images/header-phone-bg.png") no-repeat
     background-size: 100% 101%
+    a:not(.btn)
+      color: $greyColor
+      text-decoration: none
     p
       margin: 0
       font-family: $fontRegular
@@ -29,7 +32,7 @@
       font-family: $fontSemiBold
       font-size: 15px
       text-transform: uppercase
-    a 
+    a.btn 
       @extend %btn--red
       &:hover
         background-color: darken(#bb605c, 10%)
@@ -150,6 +153,10 @@
   &__call-us, &__phones
     display: inline-block
     font-size: 12px
+    a 
+      text-decoration: none
+      color: #000
+
     p
       margin: 0
 
