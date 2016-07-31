@@ -10,7 +10,10 @@ import scrollAnimate from "./scrollAnimate";
 import sectionScrollAnimate from "./sectionScrollAnimate";
 
 
+
+
 $(document).ready(function () {
+  stickyHeader();
   scrollLogic();
   navScrollLogic();
 
