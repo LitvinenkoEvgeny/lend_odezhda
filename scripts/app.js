@@ -58,33 +58,38 @@
 
 	var _scrollingLogic2 = _interopRequireDefault(_scrollingLogic);
 
-	var _myScript = __webpack_require__(4);
+	var _navScrollingLogic = __webpack_require__(4);
+
+	var _navScrollingLogic2 = _interopRequireDefault(_navScrollingLogic);
+
+	var _myScript = __webpack_require__(5);
 
 	var _myScript2 = _interopRequireDefault(_myScript);
 
-	var _stickyHeader = __webpack_require__(11);
+	var _stickyHeader = __webpack_require__(12);
 
 	var _stickyHeader2 = _interopRequireDefault(_stickyHeader);
 
-	var _modals = __webpack_require__(13);
+	var _modals = __webpack_require__(14);
 
 	var _modals2 = _interopRequireDefault(_modals);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(0, _jquery2.default)(document).ready(function () {
-	    (0, _scrollingLogic2.default)();
+	  (0, _scrollingLogic2.default)();
+	  (0, _navScrollingLogic2.default)();
 
-	    (0, _inputValue2.default)('.director-connect form');
-	    (0, _inputValue2.default)('.custom-section form');
-	    (0, _inputValue2.default)('.footer form');
+	  (0, _inputValue2.default)('.director-connect form');
+	  (0, _inputValue2.default)('.custom-section form');
+	  (0, _inputValue2.default)('.footer form');
 
-	    (0, _modals2.default)('.header__buttons a:last-child', 'div.modal-havent-time');
-	    (0, _inputValue2.default)('.modal-havent-time__form');
+	  (0, _modals2.default)('.header__buttons a:last-child', 'div.modal-havent-time');
+	  (0, _inputValue2.default)('.modal-havent-time__form');
 
-	    // карточка товара
-	    (0, _modals2.default)('section ul li:not(.top-section__item)', '.modal-card');
-	    (0, _inputValue2.default)('.modal-card__form');
+	  // карточка товара
+	  (0, _modals2.default)('section ul li:not(.top-section__item)', '.modal-card');
+	  (0, _inputValue2.default)('.modal-card__form');
 	});
 
 /***/ },
@@ -10285,6 +10290,72 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function () {
+	  $(document).ready(function () {
+
+	    // главная
+	    $('.nav__item:nth-child(1)').click(function () {
+	      $('html, body').animate({
+	        scrollTop: $('header').offset().top
+	      }, 2000);
+	      return false;
+	    });
+
+	    // каталог
+	    $('.nav__item:nth-child(2)').click(function () {
+	      $('html, body').animate({
+	        scrollTop: $('.top-section__container').offset().top - 69
+	      }, 2000);
+	      return false;
+	    });
+
+	    // под заказ
+	    $('.nav__item:nth-child(3)').click(function () {
+	      $('html, body').animate({
+	        scrollTop: $('.custom-section__container').offset().top - 69
+	      }, 2000);
+	      return false;
+	    });
+
+	    // ваш доход
+	    $('.nav__item:nth-child(4)').click(function () {
+	      $('html, body').animate({
+	        scrollTop: $('.page2__header').offset().top - 69
+	      }, 2000);
+	      return false;
+	    });
+
+	    // производство
+	    $('.nav__item:nth-child(5)').click(function () {
+	      $('html, body').animate({
+	        scrollTop: $('.create-process__header').offset().top - 69
+	      }, 2000);
+	      return false;
+	    });
+
+	    // производство
+	    $('.nav__item:nth-child(6)').click(function () {
+	      $('html, body').animate({
+	        scrollTop: $('.footer__container').offset().top - 69
+	      }, 2000);
+	      return false;
+	    });
+	  });
+	};
+
+	;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	var _jquery = __webpack_require__(1);
@@ -10293,7 +10364,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var slider = __webpack_require__(5);
+	var slider = __webpack_require__(6);
 
 	_jquery2.default.fn.extend(slider);
 
@@ -10387,7 +10458,7 @@
 	}
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10414,10 +10485,10 @@
 			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
 				__webpack_require__(1),
-				__webpack_require__(6),
-				__webpack_require__(10),
-				__webpack_require__(8),
-				__webpack_require__(9)
+				__webpack_require__(7),
+				__webpack_require__(11),
+				__webpack_require__(9),
+				__webpack_require__(10)
 			], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 
@@ -11143,7 +11214,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11166,9 +11237,9 @@
 			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
 				__webpack_require__(1),
-				__webpack_require__(7),
 				__webpack_require__(8),
-				__webpack_require__(9)
+				__webpack_require__(9),
+				__webpack_require__(10)
 			], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 
@@ -11375,14 +11446,14 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;( function( factory ) {
 		if ( true ) {
 
 			// AMD. Register as an anonymous module.
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(1), __webpack_require__(8) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(1), __webpack_require__(9) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 
 			// Browser globals
@@ -11396,7 +11467,7 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;( function( factory ) {
@@ -11419,7 +11490,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11441,7 +11512,7 @@
 		if ( true ) {
 
 			// AMD. Register as an anonymous module.
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(1), __webpack_require__(8) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(1), __webpack_require__(9) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 
 			// Browser globals
@@ -12138,7 +12209,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -12159,7 +12230,7 @@
 		if ( true ) {
 
 			// AMD. Register as an anonymous module.
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(1), __webpack_require__(8) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(1), __webpack_require__(9) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 
 			// Browser globals
@@ -12189,7 +12260,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12198,7 +12269,7 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _jquerySticky = __webpack_require__(12);
+	var _jquerySticky = __webpack_require__(13);
 
 	var _jquerySticky2 = _interopRequireDefault(_jquerySticky);
 
@@ -12209,7 +12280,7 @@
 	});
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Sticky Plugin v1.0.4 for jQuery
@@ -12489,223 +12560,212 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	exports.default = function (clickElemSelector, modalBoxSelector) {
-	    var $elem = (0, _jquery2.default)(clickElemSelector);
-	    var $modal = (0, _jquery2.default)(modalBoxSelector);
-	    var $closeBtn = $modal.children('.close');
+	  var $elem = (0, _jquery2.default)(clickElemSelector);
+	  var $modal = (0, _jquery2.default)(modalBoxSelector);
+	  var $closeBtn = $modal.children('.close');
 
-	    $elem.on('click', function (e) {
-	        $modal.arcticmodal(modalSettings);
+	  $elem.on('click', function (e) {
 
-	        if (modalBoxSelector === '.modal-card') {
-	            var $target = (0, _jquery2.default)(e.currentTarget);
-	            var startImg = (0, _jquery2.default)('img', $target);
-	            var link = $target.data('link');
-	            var modalOptions = {
-	                $target: $target,
-	                $modal: $modal,
-	                startImg: startImg,
-	                link: link
-	            };
+	    if (modalBoxSelector === '.modal-card') {
+	      var $target = (0, _jquery2.default)(e.currentTarget);
+	      var startImg = (0, _jquery2.default)('img', $target);
+	      var link = $target.data('link');
+	      var modalOptions = {
+	        $target: $target,
+	        $modal: $modal,
+	        startImg: startImg,
+	        link: link
+	      };
+	      var itemModalOptions = Object.assign({}, modalOptions, { afterClose: function afterClose() {
+	          return createDefaultHtml($modal);
+	        } });
 
-	            modalCardInit(modalOptions);
-	        }
+	      $modal.arcticmodal(itemModalOptions);
+	      modalCardInit(modalOptions);
+	      return false;
+	    }
 
-	        return false;
-	    });
+	    $modal.arcticmodal(modalSettings);
 
-	    $closeBtn.on('click', function () {
-	        $modal.arcticmodal('close');
-	    });
+	    return false;
+	  });
+
+	  $closeBtn.on('click', function () {
+	    $modal.arcticmodal('close');
+	  });
 	};
 
 	var _jquery = __webpack_require__(1);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	__webpack_require__(14);
+	__webpack_require__(15);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var artcticmodal = __webpack_require__(19);
+	var artcticmodal = __webpack_require__(20);
 
 
 	_jquery2.default.fn.extend(artcticmodal);
 
 	var modalSettings = {
-	    overlay: {
-	        css: {
-	            backgroundColor: '#fff',
-	            opacity: .75
-	        }
+	  overlay: {
+	    css: {
+	      backgroundColor: '#fff',
+	      opacity: .75
 	    }
+	  }
 	};
 
+	function createDefaultHtml($modal) {
+	  var $modalImg = (0, _jquery2.default)('.modal-card__img', $modal);
+	  $modalImg.removeClass();
+	  $modalImg.addClass('modal-card__img');
+	}
+
+
 	function modalCardInit(modalOptions) {
-	    var $target = modalOptions.$target;
-	    var startImg = modalOptions.startImg;
-	    var link = modalOptions.link;
-	    var $modal = modalOptions.$modal;
+	  var link = modalOptions.link;
 
 
-	    if (link) {
-	        generateHtml(modalOptions);
-	    }
+	  if (link) {
+	    generateHtml(modalOptions);
+	  }
 	}
 
 	function generateHtml(modalOptions) {
-	    var $target = modalOptions.$target;
-	    var startImg = modalOptions.startImg;
-	    var link = modalOptions.link;
-	    var $modal = modalOptions.$modal;
-	    var item = void 0;
+	  var $target = modalOptions.$target;
+	  var startImg = modalOptions.startImg;
+	  var link = modalOptions.link;
+	  var $modal = modalOptions.$modal;
+	  var item = void 0;
 
-	    _jquery2.default.get(link, function (success) {
-	        var itemName = (0, _jquery2.default)('div p:nth-child(1)', $target).text().trim();
-	        item = findItem(itemName, success)[0];
-	        createHtml(item);
+	  _jquery2.default.get(link, function (success) {
+	    var itemName = (0, _jquery2.default)('div p:nth-child(1)', $target).text().trim();
+	    item = success.items[0];
+	    createHtml(item);
+	  });
+
+	  function findItem(name, items) {
+	    return items.items.filter(function (i) {
+	      return i.name === name;
 	    });
+	  }
 
-	    function findItem(name, items) {
-	        return items.items.filter(function (i) {
-	            return i.name === name;
-	        });
-	    };
+	  function createHtml(item) {
+	    var $modalImg = (0, _jquery2.default)('.modal-card__img', $modal);
+	    var $modalColors = (0, _jquery2.default)('.modal-card__image-colors ul', $modal);
+	    var $modalSizes = (0, _jquery2.default)('.modal-card__item-sizes ul', $modal);
+	    var $type = (0, _jquery2.default)('.modal-card__type span span', $modal);
+	    var $sostav = (0, _jquery2.default)('.modal-card__sostav span span', $modal);
+	    var $plotnost = (0, _jquery2.default)('.modal-card__plotnost span span', $modal);
+	    var $thead = (0, _jquery2.default)('.modal-card__table thead tr', $modal);
+	    var $tbody = (0, _jquery2.default)('.modal-card__table tbody tr', $modal);
 
-	    function createHtml(item) {
-	        var $modalImg = (0, _jquery2.default)('.modal-card__img', $modal);
-	        var $modalColors = (0, _jquery2.default)('.modal-card__image-colors ul', $modal);
-	        var $modalSizes = (0, _jquery2.default)('.modal-card__item-sizes ul', $modal);
-	        var $type = (0, _jquery2.default)('.modal-card__type span span', $modal);
-	        var $sostav = (0, _jquery2.default)('.modal-card__sostav span span', $modal);
-	        var $plotnost = (0, _jquery2.default)('.modal-card__plotnost span span', $modal);
-	        var $thead = (0, _jquery2.default)('.modal-card__table thead tr', $modal);
-	        var $tbody = (0, _jquery2.default)('.modal-card__table tbody tr', $modal);
+	    // $modalColors.html('');
+	    $modalSizes.html('');
+	    $modalSizes.append("<li class=\"modal-card__item-size modal-card__item-size--first\"><span>Размеры:</span></li>");
+	    $thead.html('');
+	    $tbody.html('');
 
-	        $modalColors.html('');
-	        $modalSizes.html('');
-	        $modalSizes.append("<li class=\"modal-card__item-size modal-card__item-size--first\"><span>Размеры:</span></li>");
-	        $thead.html('');
-	        $tbody.html('');
-
-	        $modalImg.attr('src', (0, _jquery2.default)(startImg).attr('src'));
-	        (0, _jquery2.default)('.modal-card__item-name', $modal).text(item.name);
-
-	        var _iteratorNormalCompletion = true;
-	        var _didIteratorError = false;
-	        var _iteratorError = undefined;
-
-	        try {
-	            for (var _iterator = item.colors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	                var c = _step.value;
-
-	                var key = Object.keys(c)[0];
-	                var value = c[key];
-	                $modalColors.append("<li class=\"modal-card__image-color modal-card__image-color--" + key + "\" data-image=\"" + value + "\"></li>");
-	            }
-	        } catch (err) {
-	            _didIteratorError = true;
-	            _iteratorError = err;
-	        } finally {
-	            try {
-	                if (!_iteratorNormalCompletion && _iterator.return) {
-	                    _iterator.return();
-	                }
-	            } finally {
-	                if (_didIteratorError) {
-	                    throw _iteratorError;
-	                }
-	            }
-	        }
-
-	        ;
-
-	        var _iteratorNormalCompletion2 = true;
-	        var _didIteratorError2 = false;
-	        var _iteratorError2 = undefined;
-
-	        try {
-	            for (var _iterator2 = item.sizes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	                var size = _step2.value;
-
-	                $modalSizes.append("<li class=\"modal-card__item-size\">" + size + "</li>");
-	            }
-	        } catch (err) {
-	            _didIteratorError2 = true;
-	            _iteratorError2 = err;
-	        } finally {
-	            try {
-	                if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	                    _iterator2.return();
-	                }
-	            } finally {
-	                if (_didIteratorError2) {
-	                    throw _iteratorError2;
-	                }
-	            }
-	        }
-
-	        ;
-
-	        $type.html(item.type);
-	        $sostav.html(item.sostav);
-	        $plotnost.html(item.plotnost);
-
-	        var _iteratorNormalCompletion3 = true;
-	        var _didIteratorError3 = false;
-	        var _iteratorError3 = undefined;
-
-	        try {
-	            for (var _iterator3 = Object.keys(item.price)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-	                var _key = _step3.value;
-
-	                $thead.append("<td>" + _key + "</td>");
-	                $tbody.append("<td>" + item.price[_key] + "</td>");
-	            }
-	        } catch (err) {
-	            _didIteratorError3 = true;
-	            _iteratorError3 = err;
-	        } finally {
-	            try {
-	                if (!_iteratorNormalCompletion3 && _iterator3.return) {
-	                    _iterator3.return();
-	                }
-	            } finally {
-	                if (_didIteratorError3) {
-	                    throw _iteratorError3;
-	                }
-	            }
-	        }
-
-	        ;
-
-	        $modalColors.children('li').on("click", function (e) {
-	            var li = (0, _jquery2.default)(e.currentTarget);
-	            $modalImg.attr('src', li.data('image'));
-	        });
+	    $modalImg.attr('src', item.defaultImg);
+	    if (item.imageClass) {
+	      var classesForAdd = item.imageClass.split(',');
+	      classesForAdd.forEach(function (classForAdd) {
+	        $modalImg.addClass("modal-card__img--" + classForAdd);
+	      });
 	    }
+	    (0, _jquery2.default)('.modal-card__item-name', $modal).text(item.name);
+
+	    // for (let c of item.colors) {
+	    //   let key = Object.keys(c)[0];
+	    //   let value = c[key];
+	    //   $modalColors.append(`<li class="modal-card__image-color modal-card__image-color--${key}" data-image="${value}"></li>`);
+	    // }
+
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
+
+	    try {
+	      for (var _iterator = item.sizes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        var size = _step.value;
+
+	        $modalSizes.append("<li class=\"modal-card__item-size\">" + size + "</li>");
+	      }
+	    } catch (err) {
+	      _didIteratorError = true;
+	      _iteratorError = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion && _iterator.return) {
+	          _iterator.return();
+	        }
+	      } finally {
+	        if (_didIteratorError) {
+	          throw _iteratorError;
+	        }
+	      }
+	    }
+
+	    $type.html(item.type);
+	    $sostav.html(item.sostav);
+	    $plotnost.html(item.plotnost);
+
+	    var _iteratorNormalCompletion2 = true;
+	    var _didIteratorError2 = false;
+	    var _iteratorError2 = undefined;
+
+	    try {
+	      for (var _iterator2 = Object.keys(item.price)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	        var key = _step2.value;
+
+	        $thead.append("<td>" + key + "</td>");
+	        $tbody.append("<td>" + item.price[key] + "</td>");
+	      }
+
+	      // $modalColors.children('li').on("click", e => {
+	      //   let li = $(e.currentTarget);
+	      //   $modalImg.attr('src', li.data('image'));
+	      // });
+	    } catch (err) {
+	      _didIteratorError2 = true;
+	      _iteratorError2 = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	          _iterator2.return();
+	        }
+	      } finally {
+	        if (_didIteratorError2) {
+	          throw _iteratorError2;
+	        }
+	      }
+	    }
+	  }
 	}
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(15);
+	var content = __webpack_require__(16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(18)(content, {});
+	var update = __webpack_require__(19)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -12722,21 +12782,21 @@
 	}
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".arcticmodal-overlay,\r\n.arcticmodal-container { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 1000; }\r\n.arcticmodal-container { overflow: auto; margin: 0; padding: 0; border: 0; border-collapse: collapse; }\r\n*:first-child+html .arcticmodal-container { height: 100% }\r\n.arcticmodal-container_i { height: 100%; margin: 0 auto; }\r\n.arcticmodal-container_i2 { padding: 24px; margin: 0; border: 0; vertical-align: middle; }\r\n.arcticmodal-error { padding: 20px; border-radius: 10px; background: #000; color: #fff; }\r\n.arcticmodal-loading { width: 80px; height: 80px; border-radius: 10px; background: #000 url(" + __webpack_require__(17) + ") no-repeat 50% 50%; }", ""]);
+	exports.push([module.id, ".arcticmodal-overlay,\r\n.arcticmodal-container { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 1000; }\r\n.arcticmodal-container { overflow: auto; margin: 0; padding: 0; border: 0; border-collapse: collapse; }\r\n*:first-child+html .arcticmodal-container { height: 100% }\r\n.arcticmodal-container_i { height: 100%; margin: 0 auto; }\r\n.arcticmodal-container_i2 { padding: 24px; margin: 0; border: 0; vertical-align: middle; }\r\n.arcticmodal-error { padding: 20px; border-radius: 10px; background: #000; color: #fff; }\r\n.arcticmodal-loading { width: 80px; height: 80px; border-radius: 10px; background: #000 url(" + __webpack_require__(18) + ") no-repeat 50% 50%; }", ""]);
 
 	// exports
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	/*
@@ -12792,13 +12852,13 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "37e24e0370847870c1c43ea9ce19b1f4.gif";
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -13052,7 +13112,7 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {/*
