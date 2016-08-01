@@ -8,11 +8,13 @@ import stickyHeader from "./stickyHeader";
 import addModal from "./modals";
 import scrollAnimate from "./scrollAnimate";
 import sectionScrollAnimate from "./sectionScrollAnimate";
+import highlightMenu from './hightlightMenu';
 
 
 
 
 $(document).ready(function () {
+  highlightMenu();
   stickyHeader();
   scrollLogic();
   navScrollLogic();

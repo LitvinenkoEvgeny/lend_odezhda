@@ -70,21 +70,26 @@
 
 	var _stickyHeader2 = _interopRequireDefault(_stickyHeader);
 
-	var _modals = __webpack_require__(13);
+	var _modals = __webpack_require__(14);
 
 	var _modals2 = _interopRequireDefault(_modals);
 
-	var _scrollAnimate = __webpack_require__(20);
+	var _scrollAnimate = __webpack_require__(21);
 
 	var _scrollAnimate2 = _interopRequireDefault(_scrollAnimate);
 
-	var _sectionScrollAnimate = __webpack_require__(21);
+	var _sectionScrollAnimate = __webpack_require__(22);
 
 	var _sectionScrollAnimate2 = _interopRequireDefault(_sectionScrollAnimate);
+
+	var _hightlightMenu = __webpack_require__(23);
+
+	var _hightlightMenu2 = _interopRequireDefault(_hightlightMenu);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(0, _jquery2.default)(document).ready(function () {
+	  (0, _hightlightMenu2.default)();
 	  (0, _stickyHeader2.default)();
 	  (0, _scrollingLogic2.default)();
 	  (0, _navScrollingLogic2.default)();
@@ -12289,7 +12294,7 @@
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -12299,12 +12304,15 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
+	var _jquerySticky = __webpack_require__(13);
+
+	var _jquerySticky2 = _interopRequireDefault(_jquerySticky);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// import sticky from "sticky";
-
-
-	// export default () => $(".nav__wrp").sticky({topSpacing: 0});
+	// $(document).ready(() => {
+	//   export default () => $(".nav__wrp").sticky({topSpacing: 0});
+	// });
 
 	exports.default = function () {
 	  var $window = (0, _jquery2.default)(window);
@@ -12324,6 +12332,286 @@
 
 /***/ },
 /* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Sticky Plugin v1.0.4 for jQuery
+	// =============
+	// Author: Anthony Garand
+	// Improvements by German M. Bravo (Kronuz) and Ruud Kamphuis (ruudk)
+	// Improvements by Leonardo C. Daronco (daronco)
+	// Created: 02/14/2011
+	// Date: 07/20/2015
+	// Website: http://stickyjs.com/
+	// Description: Makes an element on the page stick on the screen as you scroll
+	//              It will only set the 'top' and 'position' of your element, you
+	//              might need to adjust the width in some cases.
+
+	(function (factory) {
+	    if (true) {
+	        // AMD. Register as an anonymous module.
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else if (typeof module === 'object' && module.exports) {
+	        // Node/CommonJS
+	        module.exports = factory(require('jquery'));
+	    } else {
+	        // Browser globals
+	        factory(jQuery);
+	    }
+	}(function ($) {
+	    var slice = Array.prototype.slice; // save ref to original slice()
+	    var splice = Array.prototype.splice; // save ref to original slice()
+
+	  var defaults = {
+	      topSpacing: 0,
+	      bottomSpacing: 0,
+	      className: 'is-sticky',
+	      wrapperClassName: 'sticky-wrapper',
+	      center: false,
+	      getWidthFrom: '',
+	      widthFromWrapper: true, // works only when .getWidthFrom is empty
+	      responsiveWidth: false,
+	      zIndex: 'auto'
+	    },
+	    $window = $(window),
+	    $document = $(document),
+	    sticked = [],
+	    windowHeight = $window.height(),
+	    scroller = function() {
+	      var scrollTop = $window.scrollTop(),
+	        documentHeight = $document.height(),
+	        dwh = documentHeight - windowHeight,
+	        extra = (scrollTop > dwh) ? dwh - scrollTop : 0;
+
+	      for (var i = 0, l = sticked.length; i < l; i++) {
+	        var s = sticked[i],
+	          elementTop = s.stickyWrapper.offset().top,
+	          etse = elementTop - s.topSpacing - extra;
+
+	        //update height in case of dynamic content
+	        s.stickyWrapper.css('height', s.stickyElement.outerHeight());
+
+	        if (scrollTop <= etse) {
+	          if (s.currentTop !== null) {
+	            s.stickyElement
+	              .css({
+	                'width': '',
+	                'position': '',
+	                'top': '',
+	                'z-index': ''
+	              });
+	            s.stickyElement.parent().removeClass(s.className);
+	            s.stickyElement.trigger('sticky-end', [s]);
+	            s.currentTop = null;
+	          }
+	        }
+	        else {
+	          var newTop = documentHeight - s.stickyElement.outerHeight()
+	            - s.topSpacing - s.bottomSpacing - scrollTop - extra;
+	          if (newTop < 0) {
+	            newTop = newTop + s.topSpacing;
+	          } else {
+	            newTop = s.topSpacing;
+	          }
+	          if (s.currentTop !== newTop) {
+	            var newWidth;
+	            if (s.getWidthFrom) {
+	                newWidth = $(s.getWidthFrom).width() || null;
+	            } else if (s.widthFromWrapper) {
+	                newWidth = s.stickyWrapper.width();
+	            }
+	            if (newWidth == null) {
+	                newWidth = s.stickyElement.width();
+	            }
+	            s.stickyElement
+	              .css('width', newWidth)
+	              .css('position', 'fixed')
+	              .css('top', newTop)
+	              .css('z-index', s.zIndex);
+
+	            s.stickyElement.parent().addClass(s.className);
+
+	            if (s.currentTop === null) {
+	              s.stickyElement.trigger('sticky-start', [s]);
+	            } else {
+	              // sticky is started but it have to be repositioned
+	              s.stickyElement.trigger('sticky-update', [s]);
+	            }
+
+	            if (s.currentTop === s.topSpacing && s.currentTop > newTop || s.currentTop === null && newTop < s.topSpacing) {
+	              // just reached bottom || just started to stick but bottom is already reached
+	              s.stickyElement.trigger('sticky-bottom-reached', [s]);
+	            } else if(s.currentTop !== null && newTop === s.topSpacing && s.currentTop < newTop) {
+	              // sticky is started && sticked at topSpacing && overflowing from top just finished
+	              s.stickyElement.trigger('sticky-bottom-unreached', [s]);
+	            }
+
+	            s.currentTop = newTop;
+	          }
+
+	          // Check if sticky has reached end of container and stop sticking
+	          var stickyWrapperContainer = s.stickyWrapper.parent();
+	          var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (s.stickyElement.offset().top <= s.topSpacing);
+
+	          if( unstick ) {
+	            s.stickyElement
+	              .css('position', 'absolute')
+	              .css('top', '')
+	              .css('bottom', 0)
+	              .css('z-index', '');
+	          } else {
+	            s.stickyElement
+	              .css('position', 'fixed')
+	              .css('top', newTop)
+	              .css('bottom', '')
+	              .css('z-index', s.zIndex);
+	          }
+	        }
+	      }
+	    },
+	    resizer = function() {
+	      windowHeight = $window.height();
+
+	      for (var i = 0, l = sticked.length; i < l; i++) {
+	        var s = sticked[i];
+	        var newWidth = null;
+	        if (s.getWidthFrom) {
+	            if (s.responsiveWidth) {
+	                newWidth = $(s.getWidthFrom).width();
+	            }
+	        } else if(s.widthFromWrapper) {
+	            newWidth = s.stickyWrapper.width();
+	        }
+	        if (newWidth != null) {
+	            s.stickyElement.css('width', newWidth);
+	        }
+	      }
+	    },
+	    methods = {
+	      init: function(options) {
+	        var o = $.extend({}, defaults, options);
+	        return this.each(function() {
+	          var stickyElement = $(this);
+
+	          var stickyId = stickyElement.attr('id');
+	          var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName;
+	          var wrapper = $('<div></div>')
+	            .attr('id', wrapperId)
+	            .addClass(o.wrapperClassName);
+
+	          stickyElement.wrapAll(wrapper);
+
+	          var stickyWrapper = stickyElement.parent();
+
+	          if (o.center) {
+	            stickyWrapper.css({width:stickyElement.outerWidth(),marginLeft:"auto",marginRight:"auto"});
+	          }
+
+	          if (stickyElement.css("float") === "right") {
+	            stickyElement.css({"float":"none"}).parent().css({"float":"right"});
+	          }
+
+	          o.stickyElement = stickyElement;
+	          o.stickyWrapper = stickyWrapper;
+	          o.currentTop    = null;
+
+	          sticked.push(o);
+
+	          methods.setWrapperHeight(this);
+	          methods.setupChangeListeners(this);
+	        });
+	      },
+
+	      setWrapperHeight: function(stickyElement) {
+	        var element = $(stickyElement);
+	        var stickyWrapper = element.parent();
+	        if (stickyWrapper) {
+	          stickyWrapper.css('height', element.outerHeight());
+	        }
+	      },
+
+	      setupChangeListeners: function(stickyElement) {
+	        if (window.MutationObserver) {
+	          var mutationObserver = new window.MutationObserver(function(mutations) {
+	            if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
+	              methods.setWrapperHeight(stickyElement);
+	            }
+	          });
+	          mutationObserver.observe(stickyElement, {subtree: true, childList: true});
+	        } else {
+	          stickyElement.addEventListener('DOMNodeInserted', function() {
+	            methods.setWrapperHeight(stickyElement);
+	          }, false);
+	          stickyElement.addEventListener('DOMNodeRemoved', function() {
+	            methods.setWrapperHeight(stickyElement);
+	          }, false);
+	        }
+	      },
+	      update: scroller,
+	      unstick: function(options) {
+	        return this.each(function() {
+	          var that = this;
+	          var unstickyElement = $(that);
+
+	          var removeIdx = -1;
+	          var i = sticked.length;
+	          while (i-- > 0) {
+	            if (sticked[i].stickyElement.get(0) === that) {
+	                splice.call(sticked,i,1);
+	                removeIdx = i;
+	            }
+	          }
+	          if(removeIdx !== -1) {
+	            unstickyElement.unwrap();
+	            unstickyElement
+	              .css({
+	                'width': '',
+	                'position': '',
+	                'top': '',
+	                'float': '',
+	                'z-index': ''
+	              })
+	            ;
+	          }
+	        });
+	      }
+	    };
+
+	  // should be more efficient than using $window.scroll(scroller) and $window.resize(resizer):
+	  if (window.addEventListener) {
+	    window.addEventListener('scroll', scroller, false);
+	    window.addEventListener('resize', resizer, false);
+	  } else if (window.attachEvent) {
+	    window.attachEvent('onscroll', scroller);
+	    window.attachEvent('onresize', resizer);
+	  }
+
+	  $.fn.sticky = function(method) {
+	    if (methods[method]) {
+	      return methods[method].apply(this, slice.call(arguments, 1));
+	    } else if (typeof method === 'object' || !method ) {
+	      return methods.init.apply( this, arguments );
+	    } else {
+	      $.error('Method ' + method + ' does not exist on jQuery.sticky');
+	    }
+	  };
+
+	  $.fn.unstick = function(method) {
+	    if (methods[method]) {
+	      return methods[method].apply(this, slice.call(arguments, 1));
+	    } else if (typeof method === 'object' || !method ) {
+	      return methods.unstick.apply( this, arguments );
+	    } else {
+	      $.error('Method ' + method + ' does not exist on jQuery.sticky');
+	    }
+	  };
+	  $(function() {
+	    setTimeout(scroller, 0);
+	  });
+	}));
+
+
+/***/ },
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12391,11 +12679,11 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	__webpack_require__(14);
+	__webpack_require__(15);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var artcticmodal = __webpack_require__(19);
+	var artcticmodal = __webpack_require__(20);
 
 
 	_jquery2.default.fn.extend(artcticmodal);
@@ -12538,16 +12826,16 @@
 	}
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(15);
+	var content = __webpack_require__(16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(18)(content, {});
+	var update = __webpack_require__(19)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -12564,21 +12852,21 @@
 	}
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".arcticmodal-overlay,\r\n.arcticmodal-container { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 1000; }\r\n.arcticmodal-container { overflow: auto; margin: 0; padding: 0; border: 0; border-collapse: collapse; }\r\n*:first-child+html .arcticmodal-container { height: 100% }\r\n.arcticmodal-container_i { height: 100%; margin: 0 auto; }\r\n.arcticmodal-container_i2 { padding: 24px; margin: 0; border: 0; vertical-align: middle; }\r\n.arcticmodal-error { padding: 20px; border-radius: 10px; background: #000; color: #fff; }\r\n.arcticmodal-loading { width: 80px; height: 80px; border-radius: 10px; background: #000 url(" + __webpack_require__(17) + ") no-repeat 50% 50%; }", ""]);
+	exports.push([module.id, ".arcticmodal-overlay,\r\n.arcticmodal-container { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 1000; }\r\n.arcticmodal-container { overflow: auto; margin: 0; padding: 0; border: 0; border-collapse: collapse; }\r\n*:first-child+html .arcticmodal-container { height: 100% }\r\n.arcticmodal-container_i { height: 100%; margin: 0 auto; }\r\n.arcticmodal-container_i2 { padding: 24px; margin: 0; border: 0; vertical-align: middle; }\r\n.arcticmodal-error { padding: 20px; border-radius: 10px; background: #000; color: #fff; }\r\n.arcticmodal-loading { width: 80px; height: 80px; border-radius: 10px; background: #000 url(" + __webpack_require__(18) + ") no-repeat 50% 50%; }", ""]);
 
 	// exports
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	/*
@@ -12634,13 +12922,13 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "37e24e0370847870c1c43ea9ce19b1f4.gif";
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12894,7 +13182,7 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {/*
@@ -13159,7 +13447,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13171,16 +13459,38 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(0, _jquery2.default)(document).ready(function () {
+	  (0, _jquery2.default)(window).trigger('scroll');
+	  var $animation_elements = (0, _jquery2.default)('.top-section li');
 	  var $window = (0, _jquery2.default)(window);
-	  var $animateElems = (0, _jquery2.default)('.top-section');
 
-	  var offsetFromTop = void 0;
-	  $window.on('scroll resize', function (e) {
-	    offsetFromTop = window.pageYOffset;
-	    if (offsetFromTop === $animateElems.offset().top) {
-	      console.log('here');
-	    }
-	  });
+	  function checkInView() {
+	    var windowHeight = $window.height();
+	    var windowInnerHeight = window.innerHeight;
+	    var windowTopPosition = $window.scrollTop();
+	    var windowBottomPosition = windowTopPosition + windowInnerHeight;
+
+	    _jquery2.default.each($animation_elements, function (index, elem) {
+	      elem = (0, _jquery2.default)(elem);
+	      var elemHeight = elem.height();
+	      var elemTopPosition = elem.offset().top;
+	      var elemBottomPosition = elemTopPosition + elemHeight;
+
+	      var delay = 100;
+	      if (elemTopPosition >= windowTopPosition + elemHeight && elemBottomPosition <= windowBottomPosition + elemHeight) {
+	        if (elem.hasClass('animated zoomIn')) {
+	          return;
+	        }
+	        setTimeout(function () {
+	          elem.addClass('animated zoomIn');
+	        }, delay);
+	        delay += 400;
+	      } else {
+	        elem.removeClass('animated zoomIn');
+	      }
+	    });
+	  }
+
+	  $window.on('scroll resize', checkInView);
 	});
 	//   const $animation_elements = $('.top-section');
 	//   const $window = $(window);
@@ -13235,64 +13545,117 @@
 	// }
 
 /***/ },
-/* 21 */
-/***/ function(module, exports) {
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
 
-	// import $ from "jquery";
-	//
-	//
-	// $(document).ready(function() {
-	//     var mobile = navigator.userAgent.toLowerCase().match(/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i);
-	//
-	//     if(mobile != null) {
-	//         $('html').css('width', window.innerWidth + 'px');
-	//     } else {
-	//         $(".scroll").each(function() {
-	//             var block = $(this);
-	//             $(window).scroll(function() {
-	//                 var top = block.offset().top;
-	//                 var bottom = block.height()+top;
-	//                 top = top - $(window).height();
-	//                 var scroll_top = $(this).scrollTop();
-	//                 var block_center = block.offset().top + (block.height() / 2);
-	//                 var screen_center = scroll_top + ($(window).height() / 2);
-	//                 if(block.height() < $(window).height()) {
-	//                     if ((scroll_top > (top-(block.height()/2))) && ((scroll_top < bottom+(block.height()/2))) && (scroll_top + $(window).height() > (bottom-(block.height()/2))) && (scroll_top < (block.offset().top+(block.height()/2)))) {
-	//                         if (!block.hasClass("zoomIn animated")) {
-	//                             block.addClass("zoomIn animated");
-	//                         }
-	//                     } else {
-	//                         if((block.offset().top + block.height() < scroll_top) || (block.offset().top > (scroll_top + $(window).height()))) {
-	//                             block.removeClass("zoomIn animated");
-	//                         }
-	//                     }
-	//                 } else {
-	//                     if ((scroll_top > top) && (scroll_top < bottom) && (Math.abs(screen_center - block_center) < (block.height() / 4))) {
-	//                         if (!block.hasClass("zoomIn animated")) {
-	//                             block.addClass("zoomIn animated");
-	//                         }
-	//                     } else {
-	//                         if((block.offset().top + block.height() < scroll_top) || (block.offset().top > (scroll_top + $(window).height()))) {
-	//                             block.removeClass("zoomIn animated");
-	//                         }
-	//                     }
-	//                 }
-	//             });
-	//         });
-	//     }
-	//
-	// });
-	//
-	// function isScrolledIntoView(elem) {
-	//     var docViewTop = $(window).scrollTop();
-	//     var docViewBottom = docViewTop + $(window).height();
-	//
-	//     var elemTop = $(elem).offset().top;
-	//     var elemBottom = elemTop + $(elem).height();
-	//
-	//     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-	// }
-	"use strict";
+	'use strict';
+
+	var _jquery = __webpack_require__(1);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	(0, _jquery2.default)(document).ready(function () {
+	  var $animation_elements = (0, _jquery2.default)('.scroll');
+	  var $window = (0, _jquery2.default)(window);
+
+	  function checkInView() {
+	    var windowHeight = $window.height();
+	    var windowInnerHeight = window.innerHeight;
+	    var windowTopPosition = $window.scrollTop();
+	    var windowBottomPosition = windowTopPosition + windowInnerHeight;
+
+	    _jquery2.default.each($animation_elements, function (index, elem) {
+	      elem = (0, _jquery2.default)(elem);
+	      var elemHeight = elem.height();
+	      var elemTopPosition = elem.offset().top;
+	      var elemBottomPosition = elemTopPosition + elemHeight;
+
+	      var delay = 100;
+	      if (elemTopPosition >= windowTopPosition + elemHeight && elemBottomPosition <= windowBottomPosition + elemHeight) {
+	        if (elem.hasClass('animated zoomIn')) {
+	          return;
+	        }
+	        setTimeout(function () {
+	          elem.addClass('animated zoomIn');
+	        }, delay);
+	        delay += 400;
+	      } else {
+	        elem.removeClass('animated zoomIn');
+	      }
+	    });
+	  }
+
+	  $window.on('scroll resize', checkInView);
+	});
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _jquery = __webpack_require__(1);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	exports.default = function () {
+	  var $forHighlight = (0, _jquery2.default)('.js-highlightNav');
+	  var $window = (0, _jquery2.default)(window);
+
+	  function checkInView() {
+	    var $navItems = (0, _jquery2.default)('li.nav__item');
+	    var navItems = [].concat(_toConsumableArray(document.querySelectorAll('li.nav__item')));
+
+	    var elemAtCenter = (0, _jquery2.default)(document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2));
+	    var parent = elemAtCenter.parents('.js-highlightNav');
+	    if (parent) {
+	      $navItems.removeClass('active');
+	      if (!parent.data()) {
+	        return;
+	      }
+	      var elemIndexData = parent.data().highlightindex;
+	      navItems[elemIndexData].classList.add('active');
+	    }
+
+	    // console.log(window.innerWidth / 2, window.innerHeight /2);
+
+	    // $.each($forHighlight, (index, elem) => {
+	    // elem = $(elem);
+	    // const elemHeight = elem.height();
+	    // const elemTopPosition = elem.offset().top;
+	    // const elemBottomPosition = (elemTopPosition + elemHeight);
+	    //
+	    // if ((elemTopPosition >= windowTopPosition + elemHeight &&
+	    //   elemBottomPosition <= windowBottomPosition + elemHeight) ||
+	    //   (elemTopPosition <= windowTopPosition && 
+	    //   elemBottomPosition >= windowBottomPosition) ||
+	    //   (elemTopPosition <= windowTopPosition) && 
+	    //   (elemBottomPosition <= windowBottomPosition)
+	    // ) {
+	    //   const elemIndexData = elem.data().highlightindex;
+	    //   $navItems.removeClass('active');
+	    //   console.log(navItems);
+	    //   console.log(elemIndexData);
+	    //   console.log(navItems[elemIndexData]);
+	    //   navItems[elemIndexData].classList.add('active');
+	    //  
+	    // } else {
+	    // }
+	    // });
+	  }
+
+	  $window.on('scroll resize', checkInView);
+	};
 
 /***/ }
 /******/ ]);

@@ -15,7 +15,7 @@
       @extend %container;
       padding: 42px 0 47px;
     }
-    &__before{
+    &__before {
       width: 1000px;
       position: absolute;
       left: -600px;
@@ -26,7 +26,7 @@
       background-color: #909090;
       display: block;
     }
-    &__after{
+    &__after {
       width: 1000px;
       position: absolute;
       right: -600px;
@@ -56,6 +56,7 @@
         background-color: $bgColor;
         z-index: 3;
         padding: 10px;
+        text-transform: uppercase;
         // &::before {
         //   width: 1000px;
         //   position: absolute;
@@ -84,7 +85,7 @@
       margin: 0;
       padding: 0;
       font-size: 0;
-      &--centralize-items{
+      &--centralize-items {
         text-align: center;
       }
     }
@@ -101,24 +102,24 @@
       background: #fff;
       margin-bottom: 40px;
       cursor: pointer;
-      img{
+      img {
         width: 100%;
         height: 235px;
       }
-      &--bigger{
+      &--bigger {
         height: 450px;
-        img{
+        img {
           height: 285px;
         }
       }
-      &--less-width{
-        img{
+      &--less-width {
+        img {
           width: 80%;
         }
       }
-      &--less-height{
+      &--less-height {
         height: 350px;
-        img{
+        img {
           height: 185px;
         }
       }
@@ -190,7 +191,7 @@
       border: 2px solid #dedede;
       text-align: center;
     }
-    &--more-tpadding{
+    &--more-tpadding {
       padding: 140px 110px 70px !important;
     }
     &__wrp {
@@ -222,14 +223,14 @@
       font-weight: 500;
       line-height: 24px;
       text-transform: uppercase;
-      &--phone-icon{
-        h3{
+      &--phone-icon {
+        h3 {
           font-size: 30px;
           text-align: center;
           display: inline-block;
           border-bottom: 1px solid #000;
           padding-bottom: 10px;
-          &::before{
+          &::before {
             content: url('../images/icon-phone.png');
             display: inline-block;
             position: relative;
@@ -248,7 +249,7 @@
       font-weight: 400;
       line-height: 22px;
       margin-top: 20px;
-      &--big-text{
+      &--big-text {
         font-size: 24px;
         color: #4f4d4d;
         line-height: 30px;

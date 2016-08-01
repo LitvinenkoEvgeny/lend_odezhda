@@ -1,16 +1,40 @@
 import $ from "jquery";
 
-$(document).ready(function() {
+
+$(document).ready(function () {
+  $(window).trigger('scroll');
+  const $animation_elements = $('.top-section li');
   const $window = $(window);
-  const $animateElems = $('.top-section');
-  
-  let offsetFromTop;
-  $window.on('scroll resize', (e) => {
-    offsetFromTop = window.pageYOffset;
-    if(offsetFromTop === $animateElems.offset().top){
-      console.log(`here`);
-    }
-  })
+
+  function checkInView() {
+    const windowHeight = $window.height();
+    const windowInnerHeight = window.innerHeight;
+    const windowTopPosition = $window.scrollTop();
+    const windowBottomPosition = (windowTopPosition + windowInnerHeight);
+
+    $.each($animation_elements, (index, elem) => {
+      elem = $(elem);
+      const elemHeight = elem.height();
+      const elemTopPosition = elem.offset().top;
+      const elemBottomPosition = (elemTopPosition + elemHeight);
+
+      let delay = 100;
+      if (elemTopPosition >= windowTopPosition + elemHeight &&
+        elemBottomPosition <= windowBottomPosition + elemHeight) {
+        if (elem.hasClass('animated zoomIn')) {
+          return;
+        }
+        setTimeout(() => {
+          elem.addClass('animated zoomIn');
+        }, delay);
+        delay += 400;
+      } else {
+        elem.removeClass('animated zoomIn');
+      }
+    });
+  }
+
+  $window.on('scroll resize', checkInView)
 });
 //   const $animation_elements = $('.top-section');
 //   const $window = $(window);

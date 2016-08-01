@@ -1,8 +1,10 @@
 import $ from "jquery";
-// import sticky from "sticky";
+import sticky from "jquery-sticky";
 
 
-// export default () => $(".nav__wrp").sticky({topSpacing: 0});
+// $(document).ready(() => {
+//   export default () => $(".nav__wrp").sticky({topSpacing: 0});
+// });
 
 export default () => {
   const $window = $(window);

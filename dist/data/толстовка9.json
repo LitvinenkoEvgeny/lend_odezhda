@@ -8,6 +8,7 @@
       "sostav": "Хлопок - 100% ",
       "defaultImg": "images/Толстовки/с замком2 - ж.jpg",
       "plotnost": "240",
+      "imageClass": "no-height",
       "sizes": [
         "S (42)",
         "M (44)",
